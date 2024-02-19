@@ -4,6 +4,8 @@
 * [开发环境配置](kai-fa-huan-jing-pei-zhi.md)
 * [基础学](ji-chu-xue/README.md)
   * [注册 基础](ji-chu-xue/zhu-ce-ji-chu.md)
+* [数据学](shu-ju-xue/README.md)
+  * [Page 1](shu-ju-xue/page-1.md)
 * [ModernUI 使用笔记](modernui-shi-yong-bi-ji/README.md)
   * [将Mui加载进项目依赖](modernui-shi-yong-bi-ji/jiang-mui-jia-zai-jin-xiang-mu-yi-lai.md)
   * [在mc中使用Mui的UI系统](modernui-shi-yong-bi-ji/zai-mc-zhong-shi-yong-mui-de-ui-xi-tong.md)
