@@ -4,10 +4,6 @@ description: 主动发送一些包含任意数据的网络包
 
 # 自定义数据包
 
-数据包,即包含任意数据的网络包
-
-网络通讯中使用`FriendlyByteBuf`作为中间件,也就是说,无论你的数据是什么类型,都将打包为`FriendlyByteBuf` 然后发送给另一端,在另一端中解包为原始数据
-
 ### 想要发送的数据
 
 通常我们会用一个类来表示,由于是高版本我们可以选择使用`record`替代类
@@ -46,7 +42,7 @@ public record KeyPacket(String playerName, int key) implements CustomPacketPaylo
 
 `write`方法是用于将原始数据写入到中间件`FriendlyByteBuf` ,若是你的类型没有自带的实现,你需要自己编写相关实现
 
-### 数据接受处理
+### 数据接收处理
 
 ```java
 public class KeyChannelHandler {
@@ -101,7 +97,14 @@ public class KeyChannelHandler {
 我们在主类中编写:
 
 ```java
-    @SubscribeEvent
+    public NetworkingExample(IEventBus modEventBus)
+    {
+        NeoForge.EVENT_BUS.register(this);
+
+        // 添加监听器,用于注册通道
+        modEventBus.addListener(this::register);
+    }
+    
     public void register(final RegisterPayloadHandlerEvent event) {
         // 首先我们需要获取自己模组的数据包注册器
         final IPayloadRegistrar registrar = event.registrar(MOD_ID);
@@ -154,3 +157,10 @@ public class NetworkUtil {
 
 这里我们直接用接口`CustomPacketPayload` 方便让不同的数据包都能使用这个函数
 
+
+
+
+
+### 示例代码仓库
+
+{% embed url="https://github.com/kitUIN/NetworkingExample" %}
