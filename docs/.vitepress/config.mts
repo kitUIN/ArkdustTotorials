@@ -34,12 +34,10 @@ export default defineConfig({
         items: [
           { text: "基础学", link: "/base/" },
           { text: "数据学", link: "/data/" },
-          {
-            text: "网络学",
-            link: "/network/",
-          },
+          { text: "网络学", link: "/network/" },
         ],
       },
+      { text: "ModernUI", link: "/mui/" },
       { text: "关于", link: "/team" },
     ],
 
@@ -66,17 +64,34 @@ export default defineConfig({
           },
         ],
       },
+      {
+        text: "ModernUI使用笔记",
+        link: "/mui/",
+        collapsed: true,
+        items: [
+          { text: "将Mui加载进项目依赖", link: "/mui/preparation" },
+          { text: "在mc中使用Mui的UI系统", link: "/mui/demoscreen" },
+          { text: "Mui基础学", link: "/mui/base/", items: [
+            { text: "片段(Fragment)", link: "/mui/base/fragment" },
+            { text: "视图与文本视图(View/TextView)", link: "/mui/base/view" },
+            { text: "视图组(ViewGroup)", link: "/mui/base/viewgroup" },
+            { text: "渲染(Render)", link: "/mui/base/render" },
+            { text: "动画(Animation)", link: "/mui/base/animation" },
+          ] },
+        ],
+      },
     ],
 
     socialLinks: [
       { icon: "github", link: "https://github.com/kitUIN/ArkdustTotorials" },
     ],
     editLink: {
-      pattern: 'https://github.com/kitUIN/ArkdustTotorials/edit/master/docs/:path',
-      text:"在Github上编辑该页"
+      pattern:
+        "https://github.com/kitUIN/ArkdustTotorials/edit/master/docs/:path",
+      text: "在Github上编辑该页",
     },
     lastUpdated: {
-      text: '上次更新时间'
+      text: "上次更新时间",
     },
     search: {
       provider: "local",
