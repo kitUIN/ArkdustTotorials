@@ -17,3 +17,4 @@
     * [视图组(ViewGroup)](modernui-shi-yong-bi-ji/mui-ji-chu-xue/shi-tu-zu-viewgroup.md)
     * [渲染(Render)](modernui-shi-yong-bi-ji/mui-ji-chu-xue/xuan-ran-render.md)
     * [动画(Animation)](modernui-shi-yong-bi-ji/mui-ji-chu-xue/dong-hua-animation.md)
+    * [文字格式化(Spannable)](modernui-shi-yong-bi-ji/mui-ji-chu-xue/wen-zi-ge-shi-hua-spannable.md)

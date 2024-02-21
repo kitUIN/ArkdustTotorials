@@ -18,6 +18,20 @@ LayoutParams是用于控制线性布局中一个元素的相对位置的参数�
 
 setMargins与setMarginsRelative方法可以设置子组件的收缩或扩张(好像不能扩张)，四个值分别是原始位置相对于左，上，右，下边的收缩量。
 
+## RelativeLayout:
+
+关系布局是一种比较自由的布局，可以指定一个子视图在布局中的相对位置，也可以设置其对齐规则。
+
+需要注意的是，RelativeLayout使用的对齐规则与常用的Gravity存在差异。为了实现对齐效果，我们需要创建一个RelativeLayout.LayoutParams实例，然后使用addRule方法添加对齐规则。规则可以RelativeLayout类下的常量处找到。比如，我们想使一个视图布局在右上角，我们可以创建这样一个params：
+
+```java
+RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(group.dp(20),group.dp(20));
+params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
+params.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+```
+
+再在加入父group时传入params即可。
+
 ## LinearLayout:
 
 线性布局可以使内容排成一列，实现类似设置窗口等的效果。
