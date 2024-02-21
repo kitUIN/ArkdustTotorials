@@ -7,7 +7,7 @@ Render渲染是程序为用户在屏幕上展示可视化内容的过程。在mu
 ## Drawable
 
 > A Drawable is a general abstraction for “something that can be drawn.” Most often you will deal with Drawable as the type of resource retrieved for drawing things to the screen; the Drawable class provides a generic API for dealing with an underlying visual resource that may take a variety of forms. Unlike a View, a Drawable does not have any facility to receive events or otherwise interact with the user
->
+
 > 一个可渲染目标(Drawable)是一个"可以被绘制的东西"的抽象父类。大多数时候，您会将其用于检索资源并绘制到屏幕上。可渲染目标类提供了一个通用的接口，用于处理多种形式的底层视觉资源（注：比如说，图片，纯色，线框）。与视图(View)不同，一个可渲染目标不具有任何可以接受事件或着说用户输入的方法（注：动画效果除外）。
 
 ### ColorDrawable
@@ -18,9 +18,9 @@ Render渲染是程序为用户在屏幕上展示可视化内容的过程。在mu
 
 设置边界：使用setBounds方法可以设置画布的渲染范围的边界。两组坐标分别是其在画布上位置的起始点与结束点。
 
-{% hint style="warning" %}
+::: warning :warning: 注意
 实际测试中并没有表现出符合预期的效果，这或许需要主动推送到画布上时才能生效
-{% endhint %}
+:::
 
 热点：hotspot用于设置渲染热点，可以辅助实现一些与点击位置有关的ui特效。
 
@@ -28,9 +28,9 @@ Render渲染是程序为用户在屏幕上展示可视化内容的过程。在mu
 
 ShapeDrawable用于在位置绘制指定形状的图案。
 
-{% hint style="danger" %}
+::: danger :no_entry: 特别注意
 在配置一个ShapeDrawable时，请注意调用setUseLevelForShape(false)，否则图形可能无法被渲染。
-{% endhint %}
+:::
 
 设置形状：setShape方法可以传入一个形状的索引编号，可用的编号常量可以在ShapeDrawable下找到。对于一个圆形，其将被绘制在正中间，且直径等于组件较短边的变长。
 
