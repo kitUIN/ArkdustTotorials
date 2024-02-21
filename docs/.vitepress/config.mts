@@ -40,6 +40,7 @@ export default defineConfig({
           },
         ],
       },
+      { text: "关于", link: "/team" },
     ],
 
     sidebar: [
