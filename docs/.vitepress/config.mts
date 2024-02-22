@@ -20,9 +20,9 @@ export default defineConfig({
     ],
   ],
   lang: "zh-CN",
-  title: "ArkdustTotorials",
+  title: "ArkdustTutorials",
   description:
-    "The totorials of Minecraft Neoforge1.20.4 , Arkdust mod and even more",
+    "The Tutorials Of Minecraft Neoforge1.20.4 , Arkdust mod and even more",
   themeConfig: {
     logo: "/neo.svg",
     // https://vitepress.dev/reference/default-theme-config
@@ -100,11 +100,11 @@ export default defineConfig({
       label: '当前页大纲'
     },
     socialLinks: [
-      { icon: "github", link: "https://github.com/kitUIN/ArkdustTotorials" },
+      { icon: "github", link: "https://github.com/kitUIN/ArkdustTutorials" },
     ],
     editLink: {
       pattern:
-        "https://github.com/kitUIN/ArkdustTotorials/edit/master/docs/:path",
+        "https://github.com/kitUIN/ArkdustTutorials/edit/master/docs/:path",
       text: "在Github上编辑该页",
     },
     lastUpdated: {

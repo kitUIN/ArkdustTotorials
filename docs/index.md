@@ -3,9 +3,9 @@
 layout: home
 
 hero:
-  name: "ArkdustTotorials"
+  name: "ArkdustTutorials"
   text: "Minecraft Neoforge1.20.4 教程"
-  tagline: 以及 Arkdust mod 等教程
+  tagline: 以及 Arkdust mod 等模组教程
   image:
     src: /neo.svg
     alt: NeoForge
