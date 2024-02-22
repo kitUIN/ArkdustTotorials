@@ -1,5 +1,7 @@
 ---
 description: 需要准备：idea github账号 java17 梯子 和亿点点时间
+writers:
+  - AW-CRK14
 ---
 
 # 开发环境配置
@@ -12,11 +14,13 @@ Neoforge 1.20.4 mod应使用java17。
 
 首先我们下载idea，如果没有特殊需求可以选择社区版，这是免费的且包含大部分我们需要的功能。如果您有财力，希望您能支持idea的专业版。idea的下载链接可以在这里找到：
 
-[idea下载链接](https://www.jetbrains.com/zh-cn/idea/download/?section=windows)
+<ModernUrl icon="/icon/jetbrains.png" title="下载 IntelliJ IDEA – 领先的 Java 和 Kotlin IDE" stitle="JetBrains"
+ url="https://www.jetbrains.com/zh-cn/idea/download/?section=windows" desc="idea下载链接" />
 
 接下来我们需要在github上拉取Neoforge的MDK，也就是我们需要的开发套件。进入下面的网站：
 
-[MDK](https://github.com/neoforged/MDK)
+<ModernUrl icon="/icon/github.png" title="GitHub - neoforged/MDK: The Mod Developer Kit - this is where you start if you want to develop a new mod" stitle="Github" url="https://github.com/neoforged/MDK" />
+
 
 ## 准备Clash
 

@@ -25,6 +25,7 @@ const classes = computed(() => [`count-${props.members.length}`])
 <style scoped>
 .container {
   display: flex;
+  justify-content: flex-end;
   gap: 12px;
   margin: 0 auto;
   max-width: 1152px;

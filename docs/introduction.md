@@ -1,6 +1,7 @@
 ---
-title: 概论
 description: 像模块化机械一样模块化的mod学习……
+writers:
+  - AW-CRK14
 ---
 # 概论
 
@@ -8,7 +9,8 @@ description: 像模块化机械一样模块化的mod学习……
 
 对于MinecraftForge(目前版本下Neoforge与Forge差异还不是很大)的一些概念与基本流程的解释，请参见
 
-[boson1.16](https://boson.v2mcdev.com/introducation/intro.html)
+<ModernUrl icon="/icon/md.svg" title="导论 - Boson 1.16 Modding Tutorial" 
+ url="https://boson.v2mcdev.com/introducation/intro.html"  />
 
 本教程和其它教程的流程可能有些不同。为了对一种功能有更深入的了解，我们的教程将被拆成很多模块，就像你玩到的那些模组一样：
 
@@ -20,4 +22,6 @@ description: 像模块化机械一样模块化的mod学习……
 
 最后，附上Neoforge文档链接，链接中有Neoforge提供的绝大部分功能的简单介绍，也可以作为参考教程使用。祝您看得开心，天天没bug。
 
-[Neoforge文档](https://docs.neoforged.net/docs/advanced/accesstransformers/)
+<ModernUrl icon="/neo.ico" title="Access Transformers | NeoForged docs" 
+ url="https://docs.neoforged.net/docs/advanced/accesstransformers/"  />
+
