@@ -3,7 +3,8 @@ import mdItCustomAttrs from "markdown-it-custom-attrs";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  head: [['link', { rel: 'icon', type: 'image/x-icon', href: '/neo.ico' }],
+  head: [
+    ["link", { rel: "icon", type: "image/x-icon", href: "/neo.ico" }],
     [
       "link",
       {
