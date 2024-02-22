@@ -37,7 +37,7 @@ export default defineConfig({
         ],
       },
       { text: "ModernUI", link: "/mui/" },
-      { text: "关于", link: "/team" },
+      { text: "关于", link: "/team/" },
     ],
 
     sidebar: [
@@ -86,6 +86,9 @@ export default defineConfig({
           },
         ],
       },
+      {
+        text: "关于",
+        link: "/team/"}
     ],
 
     socialLinks: [
