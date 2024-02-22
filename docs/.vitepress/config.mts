@@ -90,7 +90,11 @@ export default defineConfig({
         text: "关于",
         link: "/team/"}
     ],
-
+    returnToTopLabel:'返回顶部', 
+    sidebarMenuLabel:'目录', 
+    outline: { 
+      label: '当前页大纲'
+    },
     socialLinks: [
       { icon: "github", link: "https://github.com/kitUIN/ArkdustTotorials" },
     ],
@@ -125,10 +129,10 @@ export default defineConfig({
         },
       },
     },
-    docFooter: {
-      prev: '上一步',
-      next: '下一步'
-    }
+    docFooter: { 
+      prev: '上一页', 
+      next: '下一页', 
+    }, 
   },
   lastUpdated: true,
   markdown: {

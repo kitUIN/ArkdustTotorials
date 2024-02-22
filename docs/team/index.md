@@ -10,7 +10,7 @@ import {
 
 const members = [
     {
-    avatar: 'https://www.github.com/AW-CRK14.png',
+    avatar: '/github/AW-CRK14.png',
     name: 'AW-CRK14',
     title: '发起者',
     links: [
@@ -18,7 +18,7 @@ const members = [
     ]
   },
   {
-    avatar: 'https://www.github.com/kitUIN.png',
+    avatar: '/github/kitUIN.png',
     name: 'kitUIN',
     title: '贡献者',
     links: [
@@ -38,7 +38,7 @@ const members = [
       感谢以下成员为文档编写做出的贡献
     </template>
   </VPTeamPageTitle>
-  <VPTeamMembers
+  <VPTeamMembers size="small"
     :members="members"
   />
 </VPTeamPage>
