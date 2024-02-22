@@ -82,7 +82,7 @@ withDefaults(defineProps<Props>(), {});
   margin-top: 4px;
   margin-bottom: 0px;
   transition: all 0.2s ease-in-out;
-  color: rgba(0, 0, 0, 1);
+  color: var(--vp-c-text-1);
 }
 .box-pointer:hover {
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.1);
