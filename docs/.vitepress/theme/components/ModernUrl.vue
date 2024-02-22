@@ -12,7 +12,7 @@ withDefaults(defineProps<Props>(), {});
 
 <template>
   <div class="ModernUrl">
-    <a class="border-box box-pointer" :href="url">
+    <a class="border-box box-pointer" target="_blank" :href="url">
       <div class="thumb-box" v-if="icon">
         <img class="thumb" :src="icon" :alt="stitle" />
       </div>
