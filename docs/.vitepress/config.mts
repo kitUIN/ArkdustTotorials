@@ -82,6 +82,7 @@ export default defineConfig({
               { text: "视图组(ViewGroup)", link: "/mui/base/viewgroup" },
               { text: "渲染(Render)", link: "/mui/base/render" },
               { text: "动画(Animation)", link: "/mui/base/animation" },
+              { text: "格式化文本(Spannable)", link: "/mui/base/spannable" },
             ],
           },
         ],
