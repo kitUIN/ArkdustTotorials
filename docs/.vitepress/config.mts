@@ -125,6 +125,10 @@ export default defineConfig({
         },
       },
     },
+    docFooter: {
+      prev: '上一步',
+      next: '下一步'
+    }
   },
   lastUpdated: true,
   markdown: {
