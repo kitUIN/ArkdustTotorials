@@ -49,7 +49,10 @@ export default defineConfig({
           {
             text: "基础学",
             link: "/base/",
-            items: [{ text: "注册 基础", link: "/base/registration" }],
+            items: [
+                { text: "模组准备", link: "/base/prepare" },
+                { text: "注册 基础", link: "/base/registration" }
+            ],
           },
           {
             text: "数据学",
