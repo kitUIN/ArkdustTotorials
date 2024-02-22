@@ -3,7 +3,7 @@ import mdItCustomAttrs from "markdown-it-custom-attrs";
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  head: [
+  head: [['link', { rel: 'icon', type: 'image/x-icon', href: '/neo.ico' }],
     [
       "link",
       {
@@ -18,7 +18,6 @@ export default defineConfig({
       },
     ],
   ],
-
   lang: "zh-CN",
   title: "ArkdustTotorials",
   description:
@@ -34,7 +33,6 @@ export default defineConfig({
         items: [
           { text: "基础学", link: "/base/" },
           { text: "数据学", link: "/data/" },
-          { text: "网络学", link: "/network/" },
         ],
       },
       { text: "ModernUI", link: "/mui/" },
@@ -55,12 +53,15 @@ export default defineConfig({
           {
             text: "数据学",
             link: "/data/",
-            items: [],
-          },
-          {
-            text: "网络学",
-            link: "/network/",
-            items: [{ text: "自定义数据包", link: "/network/custompacket" }],
+            items: [
+              {
+                text: "网络",
+                link: "/data/network/",
+                items: [
+                  { text: "自定义数据包", link: "/data/network/custompacket" },
+                ],
+              },
+            ],
           },
         ],
       },
@@ -71,13 +72,17 @@ export default defineConfig({
         items: [
           { text: "将Mui加载进项目依赖", link: "/mui/preparation" },
           { text: "在mc中使用Mui的UI系统", link: "/mui/demoscreen" },
-          { text: "Mui基础学", link: "/mui/base/", items: [
-            { text: "片段(Fragment)", link: "/mui/base/fragment" },
-            { text: "视图与文本视图(View/TextView)", link: "/mui/base/view" },
-            { text: "视图组(ViewGroup)", link: "/mui/base/viewgroup" },
-            { text: "渲染(Render)", link: "/mui/base/render" },
-            { text: "动画(Animation)", link: "/mui/base/animation" },
-          ] },
+          {
+            text: "Mui基础学",
+            link: "/mui/base/",
+            items: [
+              { text: "片段(Fragment)", link: "/mui/base/fragment" },
+              { text: "视图与文本视图(View/TextView)", link: "/mui/base/view" },
+              { text: "视图组(ViewGroup)", link: "/mui/base/viewgroup" },
+              { text: "渲染(Render)", link: "/mui/base/render" },
+              { text: "动画(Animation)", link: "/mui/base/animation" },
+            ],
+          },
         ],
       },
     ],

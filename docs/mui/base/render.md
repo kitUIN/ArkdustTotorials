@@ -46,15 +46,11 @@ ImageDrawable用于在位置渲染一张贴图。
 
 构造方法需要一个Image类，可以用过Image.create(namespace,path)获取到资源路径中的一个图片。Path中应指定文件的后缀，比如.png和.jpg等。构造方法中的同理。
 
-
-
 ## DrawableWrapper
 
 可渲染目标包装器(DrawableWrapper)是一种特殊的Drawable，用于对一个已有的Drawable进行额外的处理，比如缩放，裁剪等。具体内容与用法请自行搜索。
 
-
-
-## DrawableContainer:
+## DrawableContainer
 
 DrawableContainer是一种特殊的Drawable，可以同时保有多种Drawable并按照一定方法选择将会使用的Drawable。其最常用的子类为StateListDrawable，其特别之处在于可以为不同状态指定不同的Drawable，被指定的状态可以在StateSet.get(StateSet.xxx)找到。
 
@@ -78,11 +74,9 @@ public static void addBackground(View view) {
 
 这段代码创建了一个半透明白色圆角矩形，并将其添加到StateListDrawable中，指定了其显示的条件为VIEW\_STATE\_HOVERED也就是鼠标在组件上时。最后设置了淡入和淡出时间为250毫秒。
 
-
-
 ## Draw
 
-### Draw:
+### Draw
 
 ```java
 void draw(@NonNull Canvas canvas)
