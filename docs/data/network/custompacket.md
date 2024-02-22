@@ -163,4 +163,5 @@ public class NetworkUtil {
 
 ### 示例代码仓库
 
-[示例代码仓库](https://github.com/kitUIN/NetworkingExample)
+<ModernUrl icon="/icon/github.png" title="kitUIN/NetworkingExample - NeoForge1.20.4网络示例仓库" stitle="GitHub"
+ url="https://github.com/kitUIN/NetworkingExample"  />

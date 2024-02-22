@@ -34,6 +34,7 @@ withDefaults(defineProps<Props>(), {});
   position: relative;
   flex-direction: column;
   padding-bottom: 8px;
+  padding-top: 4px;
 }
 .border-box {
   cursor: pointer;
