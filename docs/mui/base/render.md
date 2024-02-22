@@ -77,7 +77,7 @@ public static void addBackground(View view) {
 ## Draw
 
 ```java
-void draw(@NonNull Canvas canvas)
+void draw(@NonNull Canvas canvas);
 ```
 
 这个方法是一个`Drawable`类中最核心的方法，用于在画布上绘制内容。同时，对于控制绘制内容的一些特征，还需要用到`Paint`类。
