@@ -110,8 +110,50 @@ public ArkTTS(final IEventBus bus){
   就可以帮助我们理解``craftRemainder(Item pCraftingRemainingItem)``这个方法是配方后留下物品,以及``stacksTo(int pMaxStackSize)``方法是设置堆叠。
 * 最后，多试。最简单粗暴也最有效的办法就是设置对照，保持两个物品中一个不变，另一个添加特性，再进游戏观察区别。在现阶段，这将是帮助你解决问题的有效方式。
 
-如果您想对这部分内容做出补充，请访问我们的github并提交pull require。在分章节中，我们会聊聊有关创造模式物品栏，食物和装备的问题。而有关物品的复杂交互，计划将会放在[物品 进阶]章节。
+接下来的内容，我将直接翻译neoforge官方文档，我想这部分应当是比较易懂的。
+## 食物
+> The Item class provides default functionality for food items, meaning you don't need a separate class for that. To make your item edible, all you need to do is set the ``FoodProperties`` on it through the food method in ``Item.Properties``.  
+Item类提供了食物物品的功能，这意味着您不用为其创建一个单独的类。要让您的物品可以被食用，您只需要在``Item.Properties``中设置您的``食物属性(FoodProperties)``。
+>
+> <br/>FoodProperties are created using a ``FoodProperties.Builder``. You can then set various properties on it:  
+食物属性使用``FoodProperties.Builder``来创建，你可以为其配置以下的属性:
+>
+>* ``nutrition`` - Probably the most obvious part. Sets how many hunger points are restored. Counts in half hunger points, so for example, Minecraft's steak restores 8 hunger points.
+营养是最常用的部分，用来设置其食用后可以恢复多少点饥饿值。每1点数代表游戏中的半格饥饿值，例如，烤牛排在游戏中回复4个/*TODO*/，它的营养值是8.
+>* ``saturationMod`` - The saturation modifier used in calculating the saturation value restored when eating this food. The calculation is min(2 * nutrition * saturationMod, playerNutrition), meaning that using 0.5 will make the effective saturation value the same as the nutrition value.  
+饱和系数用来计算在食用该食物是可以提供的饱和度。其计算公式为:取“二倍营养值与饱和系数的积”与“玩家饥饿值”的小值。这意味着，如果这个数值设置为0.5F，其提供的饱和度将与提供的营养值相等。
+>* ``meat`` - Whether this item should be considered meat or not. Used e.g. for determining if healing dogs with this food is possible.  
+这一方法用于判断此食物是否为肉类。例如，它可以用于判断这个物品是否可以用于治疗狗勾。
+>* ``alwaysEat`` - Whether this item can always be eaten, even if the hunger bar is full. false by default, true for golden apples and other items that provide bonuses beyond just filling the hunger bar.  
+这一方法决定了食物是否可以在饱腹状态下食用。默认为false，而像金苹果这样的，除了补充饥饿值还可以提供额外加成的食物通常为true。
+>* ``fast`` - Whether fast eating should be enabled for this food. false by default, true for dried kelp in vanilla.  
+这一方法决定了物品是否可以被迅速食用。默认为false，而诸如原版的干海带之类是true。这会使物品的食用读条变快。
+>* ``effect`` - Adds a MobEffectInstance to apply when eating this item. The second parameter denotes the probability of the effect being applied; for example, Rotten Flesh has an 80% chance (= 0.8) of applying the Hunger effect when eaten. This method comes in two variants; you should use the one that takes in a supplier (the other one directly takes a mob effect instance and is deprecated by NeoForge due to classloading issues).  
+效果方法可以在物品被食用时为使用者提供额外的药水效果。第二个参数是决定了该效果被提供给玩家的几率，比如腐肉的数值为0.8F，这意味着腐肉原则上有80%的概率为玩家添加一个饥饿效果。这个方法签名对应着两个方法(也就是俩方法名字相同)，请用使用lambda表达式提供药水效果的那个方法，因为另一个直接传入药水效果实例的方法在使用mod注册的药水效果时，由于neoforge的注册设计会产生报错(这个报错在[注册](registration.md)章节我们提到过)。
+>* ``build`` - Once you've set everything you want to set, call build to get a ``FoodProperties`` object for further use.  
+在你完成了所有内容的配置后，请调用这个方法来创建一个``食物属性(FoodProperties)``实例。
+> <br/>For examples, or to look at the various values used by Minecraft, have a look at the ``Foods`` class.  
+如果需要获取使用例或查看Minecraft使用的各种数值，请查看``net.minecraft.world.food.Foods``类。
+> <br/>To get the FoodProperties for an item, call ``Item#getFoodProperties(ItemStack, LivingEntity)``. This may return null, since not every item is edible. To determine whether an item is edible, call ``Item#isEdible()`` or null-check the result of the ``getFoodProperties`` call.
+如果需要获取一个物品的食物属性，请调用``Item#getFoodProperties(ItemStack, LivingEntity)``方法。由于一些食物并非任何时候都可以食用，这个返回值可能为null。如果需要判断一个物品是否可以食用，您需要使用调用``Item#isEdible()``或检查``getFoodProperties``的返回值是否为null。
 
-更多内容可以参考[Neoforge官方文档](https://docs.neoforged.net/docs/items/)
+这里为大家提供一个示例:
+```java
+public static final DeferredItem<Item> SUPER_GOLD_APPLE = REGISTER.register("super_gold_apple",SuperGoooooooldApple::new);
 
+    //再创建一个类并继承物品类。如果要对物品进行更复杂的操作，我们就需要这么做。
+    public class SuperGoooooooldApple extends Item{
+        public static final FoodProperties p = new FoodProperties.Builder()
+                .alwaysEat().fast().nutrition(114).saturationMod(0.514F)
+                .effect(()->new MobEffectInstance(MobEffects.REGENERATION,3000,5),1)//3000tick的六级生命恢复，概率1(100%)
+                .effect(()->new MobEffectInstance(MobEffects.ABSORPTION,1000,3),1)//1000tick的四级伤害吸收，概率1
+                .effect(()->new MobEffectInstance(MobEffects.HEAL,200,2),0.8F)//200tick的三级瞬间治疗，概率0.8(80%)
+                .build();
+
+
+        public SuperGoooooooldApple() {
+            super(new Properties().food(p).rarity(Rarity.EPIC));
+        }
+    }
+```
 

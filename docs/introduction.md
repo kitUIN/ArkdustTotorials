@@ -22,6 +22,8 @@ writers:
 
 最后，附上Neoforge文档链接，链接中有Neoforge提供的绝大部分功能的简单介绍，也可以作为参考教程使用。祝您看得开心，天天没bug。
 
-<ModernUrl icon="/neo.ico" title="Access Transformers | NeoForged docs" 
- url="https://docs.neoforged.net/docs/advanced/accesstransformers/"  />
+如果您想对这部分内容做出补充，请访问我们的github并提交pull require。
+
+<ModernUrl icon="/neo.ico" title="Access Transformers | NeoForged docs"
+url="https://docs.neoforged.net/docs/advanced/accesstransformers/"  />
 
