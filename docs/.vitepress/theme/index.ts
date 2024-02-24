@@ -2,8 +2,8 @@ import DefaultTheme from 'vitepress/theme'
 import type { Theme } from 'vitepress'
 import MyLayout from './components/MyLayout.vue'
 import ModernUrl from './components/ModernUrl.vue'
-import McIconChild from './components/McIconChild.vue'
 import McIcon from './components/McIcon.vue'
+import McIconBar from './components/McIconBar.vue'
 
 export default {
   extends: DefaultTheme,
@@ -12,7 +12,7 @@ export default {
   enhanceApp({app}) {
     // 注册全局组件
     app.component('ModernUrl' , ModernUrl)
-    app.component('McIconChild' , McIconChild)
     app.component('McIcon' , McIcon)
+    app.component('McIconBar' , McIconBar)
   }
 } satisfies Theme
