@@ -125,9 +125,9 @@ Item类提供了食物物品的功能，这意味着您不用为其创建一个�
 
 
 * `nutrition` - <font color="#888888">Probably the most obvious part. Sets how many hunger points are restored. Counts in half hunger points, so for example, Minecraft's steak restores 8 hunger points.</font>  
-营养是最常用的部分，用来设置其食用后可以恢复多少点饥饿值。每1点数代表游戏中的半格饥饿值，例如，烤牛排在游戏中回复4个<McIconBar icon="hunger" count="8" total="8" />，它的营养值是8<McIconBar icon="saturation" count="8"/> .
+营养是最常用的部分，用来设置其食用后可以恢复多少点饥饿值。每1点数代表游戏中的半格饥饿值，例如，烤牛排在游戏中回复4个<McIconBar icon="hunger" count="8" total="8" />，它的营养值是8.
 * `saturationMod` - <font color="#888888">The saturation modifier used in calculating the saturation value restored when eating this food. The calculation is min(2 * nutrition * saturationMod, playerNutrition), meaning that using 0.5 will make the effective saturation value the same as the nutrition value.</font>  
-饱和系数用来计算在食用该食物是可以提供的饱和度。其计算公式为:取“二倍营养值与饱和系数的积”与“玩家饥饿值”的小值。这意味着，如果这个数值设置为0.5F，其提供的饱和度将与提供的营养值相等。
+饱和系数用来计算在食用该食物是可以提供的饱和度<McIconBar icon="saturation" count="1"/>。其计算公式为:取“二倍营养值与饱和系数的积”与“玩家饥饿值”的小值。这意味着，如果这个数值设置为0.5F，其提供的饱和度将与提供的营养值相等。
 * `meat` - <font color="#888888">Whether this item should be considered meat or not. Used e.g. for determining if healing dogs with this food is possible.</font>  
 这一方法用于判断此食物是否为肉类。例如，它可以用于判断这个物品是否可以用于治疗狗勾。
 * `alwaysEat` - <font color="#888888">Whether this item can always be eaten, even if the hunger bar is full. false by default, true for golden apples and other items that provide bonuses beyond just filling the hunger bar.</font>  
