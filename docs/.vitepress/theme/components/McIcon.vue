@@ -8,7 +8,6 @@ export default {
     icon: String
   },
   setup(props) {
-
     return {
       iconName: '#icon-' + props.icon
     }

@@ -53,7 +53,7 @@ It's not a really accurate comparison (item stacks aren't singletons, for exampl
 > <br/>——摘自NeoforgeDocs，[点击此处](https://docs.neoforged.net/docs/items/)查看原文。
 
 :::details 点击查看图片版
-![clash](../public/base/item_docs.png)
+![img](/base/item_docs.png)
 :::
 
 ## 注册一个物品
@@ -62,7 +62,7 @@ It's not a really accurate comparison (item stacks aren't singletons, for exampl
 首先我们创建一个软件包registry用来存储我们的注册类。个人习惯每种注册就创建一个类，当然您想把它们全部写在一个类中也是可以的。
 
 在这个软件包下，创建`ItemRegistry`类:
-![clash](../public/base/item_image_1.png)
+![img](/base/item_image_1.png)
 接下来，我们创建一个延迟注册器用于将我们的物品提交到注册总线中。我们有两种方式创建一个物品的注册器:
 ```java
 public static final DeferredRegister<Item> REGISTER = DeferredRegister.create(Registries.ITEM, ArkTTS.MODID/*这里传入您的modid*/);
@@ -84,7 +84,7 @@ public ArkTTS(final IEventBus bus){
 虽然说我们已经创建了一个名字为pau_ingot的物品，但很显然，现在我们还没有为它指定材质。
 
 那么，我们需要准备一张最好是16*16大小的贴图，并将其放在如下图位置，再在如图位置创建一个json文件:
-![clash](../public/base/item_image_2.png)
+![img](/base/item_image_2.png)✅
 在pau_ingot.json内完成以下内容，如果复制请**注意删去注释**:
 ```json
 {
@@ -95,14 +95,14 @@ public ArkTTS(final IEventBus bus){
 }
 ```
 接下来打开游戏，我们就可以使用指令获取到我们创建的物品了。
-![clash](../public/base/item_image_3.png)
+![img](/base/item_image_3.png)
 
 ## 物品特性(ItemProperties)
 物品特性用于描述物品在特定情况下表现出的特征，比如是否可以食用，是否会被，最大耐久度与稀有度(例:金苹果的名字是蓝色的，这个蓝色是使用稀有度设置的)等。
 
 在这里我们只选择了抗火这一条。额外提示一下如何研究这些物品特性。所有可以用properties做到的方法都在net.minecraft.world.item.Item.Properties类中，其它的则需要使用一些特殊手段。
 * 看名字，大部分特性的作用都写在名字上了。比如`durability(int pMaxDamage)`这一方法，就是设置耐久度
-* 看传参，如果传参为一个非基本类型的对象，那么你或许可以在其类中找到一点线索。比如`rarity(Rarity pRarity)`这个方法，在Rarity类中我们就可以看见: ![clash](../public/base/item_image_4.png)就可以帮我们推测，这应该是和物品颜色有关了。
+* 看传参，如果传参为一个非基本类型的对象，那么你或许可以在其类中找到一点线索。比如`rarity(Rarity pRarity)`这个方法，在Rarity类中我们就可以看见: ![img](/base/item_image_4.png)就可以帮我们推测，这应该是和物品颜色有关了。
 * 看用法，原版中大量的物品使用了各种特征，您可以在`net.minecraft.world.item.Items`类下看到minecraft的物品注册。比如牛奶桶的注册:
 ```java
   public static final Item MILK_BUCKET = registerItem("milk_bucket", new MilkBucketItem(new Item.Properties().craftRemainder(BUCKET).stacksTo(1)));
@@ -125,7 +125,7 @@ Item类提供了食物物品的功能，这意味着您不用为其创建一个�
 
 
 * `nutrition` - <font color="#888888">Probably the most obvious part. Sets how many hunger points are restored. Counts in half hunger points, so for example, Minecraft's steak restores 8 hunger points.</font>  
-营养是最常用的部分，用来设置其食用后可以恢复多少点饥饿值。每1点数代表游戏中的半格饥饿值，例如，烤牛排在游戏中回复4个<McIconBar icon="hunger" count="8" total="8" />，它的营养值是8.
+营养是最常用的部分，用来设置其食用后可以恢复多少点饥饿值。每1点数代表游戏中的半格饥饿值，例如，烤牛排在游戏中回复4个<McIconBar icon="hunger" count="8" total="8" />，它的营养值是8<McIconBar icon="saturation" count="8"/> .
 * `saturationMod` - <font color="#888888">The saturation modifier used in calculating the saturation value restored when eating this food. The calculation is min(2 * nutrition * saturationMod, playerNutrition), meaning that using 0.5 will make the effective saturation value the same as the nutrition value.</font>  
 饱和系数用来计算在食用该食物是可以提供的饱和度。其计算公式为:取“二倍营养值与饱和系数的积”与“玩家饥饿值”的小值。这意味着，如果这个数值设置为0.5F，其提供的饱和度将与提供的营养值相等。
 * `meat` - <font color="#888888">Whether this item should be considered meat or not. Used e.g. for determining if healing dogs with this food is possible.</font>  

@@ -69,7 +69,7 @@ Item i2 = BuiltinRegistries.ITEM.get(new ResourceLocation("modid","item_a"));
 DynamicRegistry就是大家耳熟能详的数据包注册了，由于我们的教程更侧重于代码且数据包教程在网络上可以搜到很多，本教程中不会提供关于“如何编写数据包”的详细教程，只会提供利用Datagen将实例转换为数据包的教程。但我们在这里还是需要提一下数据包内容向代码实例的转换。
 
 首先要明确，数据包也有名字，比如说我们有一个这样的数据包：
-![clash](../public/base/reg_image_1.png)
+![img](/base/reg_image_1.png)
 那么对于这个spirit_stone_2.json文件，其名字应该是：
 ```arkdust:recipes/crafting/spirite_stone_2.json```
 
