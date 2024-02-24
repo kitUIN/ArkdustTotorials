@@ -10,7 +10,7 @@ writers:
 
 从gradle开始: 打开我们的build.gradle文件，翻到最底下，有这样一段内容:
 
-![Alt text](pre_image_1.png)
+![clash](../public/base/pre_image_1.png)
 这些绿色的部分就是我们需要修改的内容。从上到下依次是：
 * 模组id，也就是模组的唯一标识符，用于区别各种模组的最直接标识。modid必须要以小写字母开头，且只能包含小写字母，数字和下划线。我们建议您设置一个比较独特而好记的modid，以避免与其它模组产生名字冲突
 * 模组名字。模组id与模组名字的关系，就像身份证号与人名的关系，也就是说名字可以相同，不会造成崩溃。但为了更方便地让玩家辨认，我仍推荐您使用较为独特且易记的名字。名字可以包含任意字符（正常字符）
@@ -31,7 +31,7 @@ package com.auther.project;
 路径: com.landis.ark_tts.ArkTTS
 代码位置示例:
 ```
-![Alt text](pre_image_2.png)
+![clash](../public/base/pre_image_2.png)
 其中，所有名字都可以根据您的需求自行调整。我们这里创建的ArkTTS是**作为**模组主类使用，**不意味着**您的模组必须使用ArkTTS作为主类。在这个作为主类的包中，我们添加以下内容:
 ```java
 //省略package与import
