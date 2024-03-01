@@ -2,3 +2,5 @@
 /docs/.vitepress/cache/
 /docs/.vitepress/dist/
 /.idea/
+package-lock.json
+yarn.lock
