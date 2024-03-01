@@ -13,7 +13,7 @@ writers:
 首先，添加一个新的系统，如果需要在D中完成代码，打包，复制到M模组下，在M模组内调试然后修改D的代码，这样显然是过于麻烦了。有没有办法在保持D与M作为模组的独立性的情况下，直接在M中引用D的代码呢？
 这便是我们需要多模块的原因。另外，这个bugger其实是我。
 
-本篇参考了[红石计划(ProjectRed)](https://www.mcmod.cn/class/164.html)的多模块配置思路，由于版本的改动，其配置不能直接使用。在mouse0w0@github大佬的帮助下进行了高版本适配，完成本教程。
+本篇参考了[红石计划(ProjectRed)](https://www.mcmod.cn/class/164.html)的多模块配置思路，由于版本的改动，其配置不能直接使用。在mouse0w0@github大佬和AnECanSaiTin@github大佬的帮助下进行了高版本适配，完成本教程。
 
 ## 多模块结构
 
