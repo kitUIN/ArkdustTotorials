@@ -68,6 +68,16 @@ export default defineConfig({
               },
             ],
           },
+          {
+            text: "额外学",
+            link: "/extra/",
+            items: [
+              {
+                text: "多模块",
+                link: "/extra/multi_module"
+              },
+            ],
+          },
         ],
       },
       {
