@@ -1,11 +1,13 @@
 <script lang="ts">
-import "../js/mcicon.js";
+
 export default {
+  mounted () {
+    import('../js/mcicon.js').then(icon => {})
+  },
   props: {
     icon: String
   },
   setup(props) {
-
     return {
       iconName: '#icon-' + props.icon
     }
