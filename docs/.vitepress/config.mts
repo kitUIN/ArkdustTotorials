@@ -38,6 +38,7 @@ export default defineConfig({
       },
       { text: "ModernUI", link: "/mui/" },
       { text: "关于", link: "/team/" },
+      { text: "加入我们", link: "/pr/" },
     ],
 
     sidebar: [
@@ -50,9 +51,9 @@ export default defineConfig({
             text: "基础学",
             link: "/base/",
             items: [
-                { text: "模组准备", link: "/base/prepare" },
-                { text: "注册 基础", link: "/base/registration" },
-                { text: "物品 基础", link: "/base/item" }
+              { text: "模组准备", link: "/base/prepare" },
+              { text: "注册 基础", link: "/base/registration" },
+              { text: "物品 基础", link: "/base/item" },
             ],
           },
           {
@@ -74,7 +75,7 @@ export default defineConfig({
             items: [
               {
                 text: "多模块",
-                link: "/extra/multi_module"
+                link: "/extra/multi_module",
               },
             ],
           },
@@ -102,13 +103,31 @@ export default defineConfig({
         ],
       },
       {
+        text: "加入我们",
+        link: "/pr/",
+        collapsed: true,
+        items:[
+          {
+            text: "文档自定义控件",
+            items:[
+              { text: "现代化超链接", link: "/pr/modernurl" },
+              { text: "MC图标", link: "/pr/mcicon" },
+              { text: "顶部题外话", link: "/pr/subtitle" },
+              { text: "尾部作者栏", link: "/pr/author" },
+            ]
+          },
+        ]
+      },
+      {
         text: "关于",
-        link: "/team/"}
+        link: "/team/",
+      },
+      
     ],
-    returnToTopLabel:'返回顶部', 
-    sidebarMenuLabel:'目录', 
-    outline: { 
-      label: '当前页大纲'
+    returnToTopLabel: "返回顶部",
+    sidebarMenuLabel: "目录",
+    outline: {
+      label: "当前页大纲",
     },
     socialLinks: [
       { icon: "github", link: "https://github.com/kitUIN/ArkdustTutorials" },
@@ -144,10 +163,10 @@ export default defineConfig({
         },
       },
     },
-    docFooter: { 
-      prev: '上一页', 
-      next: '下一页', 
-    }, 
+    docFooter: {
+      prev: "上一页",
+      next: "下一页",
+    },
   },
   lastUpdated: true,
   markdown: {
