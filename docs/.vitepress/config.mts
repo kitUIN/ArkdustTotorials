@@ -112,6 +112,13 @@ export default defineConfig({
         ],
       },
       {
+        text: "GeckoLib使用笔记",
+        link: "/geckolib/",
+        collapsed: true,
+        items: [
+        ]
+      },
+      {
         text: "加入我们",
         link: "/pr/",
         collapsed: true,
