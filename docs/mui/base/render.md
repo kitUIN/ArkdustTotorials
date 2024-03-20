@@ -1,3 +1,7 @@
+---
+writers:
+  - AW-CRK14
+---
 # 渲染(Render)
 
 `Render`渲染是程序为用户在屏幕上展示可视化内容的过程。在mui系统中，大部分渲染由`onDraw`方法进行，而`Drawable`类则是用于向画布（Canvas）上添加新的内容。对于一些常用的渲染，mui已经提供了`Drawable`的子类。
