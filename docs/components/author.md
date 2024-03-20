@@ -19,3 +19,7 @@ writers:
 展示:
 ![img](/pr/author.png)
 
+可点击展示信息
+
+![img](/components/author-click.png)
+

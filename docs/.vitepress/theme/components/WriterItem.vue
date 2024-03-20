@@ -1,20 +1,27 @@
 <script setup lang="ts">
-import type { DefaultTheme } from 'vitepress/theme'
+import type { DefaultTheme } from "vitepress/theme";
+import Popper from "vue3-popper";
+import VPTeamMembersItem from "vitepress/dist/client/theme-default/components/VPTeamMembersItem.vue";
+import "./styles/popper.css";
 
 interface Props {
-  member: DefaultTheme.TeamMember
+  member: DefaultTheme.TeamMember;
 }
 
-withDefaults(defineProps<Props>(), {
-})
+withDefaults(defineProps<Props>(), {});
 </script>
 
 <template>
-<div class="WriterItem">
-        <figure class="avatar">
-        <img class="avatar-img" :src="member.avatar" :alt="member.name" />
-    </figure>
+  <Popper>
+    <div class="WriterItem">
+      <figure class="out-avatar">
+        <img class="out-avatar-img" :src="member.avatar" :alt="member.name" />
+      </figure>
     </div>
+    <template #content>
+      <VPTeamMembersItem class="extraItem"  size="small" :member="member"></VPTeamMembersItem>
+    </template>
+  </Popper>
 </template>
 
 <style scoped>
@@ -27,8 +34,12 @@ withDefaults(defineProps<Props>(), {
   height: 100%;
   overflow: hidden;
 }
-
-.avatar {
+.extraItem {
+  color: var(--vp-c-text-1);
+  min-width: 276px;
+  min-height: 232px;
+}
+.out-avatar {
   width: 32px;
   height: 32px;
   position: relative;
@@ -37,7 +48,7 @@ withDefaults(defineProps<Props>(), {
   border-radius: 50%;
 }
 
-.avatar-img {
+.out-avatar-img {
   position: absolute;
   top: 0;
   right: 0;
