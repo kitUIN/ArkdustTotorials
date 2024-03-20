@@ -8,7 +8,7 @@ import { prettyList } from "./theme/datas/prettyLinks";
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   head: [
-    ["link", { rel: "icon", type: "image/x-icon", href: "/neo.ico" }],
+    ["link", { rel: "icon", type: "image/x-icon", href: "/icon/neo.ico" }],
     [
       "link",
       {
@@ -28,7 +28,7 @@ export default defineConfig({
   description:
     "The Tutorials Of Minecraft Neoforge1.20.4 , Arkdust mod and even more",
   themeConfig: {
-    logo: "/neo.svg",
+    logo: "/icon/neo.svg",
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: "主页", link: "/" },

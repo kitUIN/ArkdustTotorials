@@ -24,6 +24,6 @@ writers:
 
 如果您想对这部分内容做出补充，请访问我们的github并提交pull require。
 
-<ModernUrl icon="/neo.ico" title="Access Transformers | NeoForged docs"
+<ModernUrl icon="/icon/neo.ico" title="Access Transformers | NeoForged docs"
 url="https://docs.neoforged.net/docs/advanced/accesstransformers/"  />
 
