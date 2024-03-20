@@ -41,8 +41,8 @@ export default defineConfig({
         ],
       },
       { text: "ModernUI", link: "/mui/" },
-      { text: "关于", link: "/team/" },
-      { text: "加入我们", link: "/pr/" },
+      { text: "关于", link: "/about/team" },
+      { text: "加入我们", link: "/about/pr" },
     ],
 
     sidebar: [
@@ -123,25 +123,24 @@ export default defineConfig({
         ]
       },
       {
-        text: "加入我们",
-        link: "/pr/",
-        collapsed: true,
+        text: "关于",
+        link: "/about/team",
         items:[
+          {
+            text: "加入我们",
+            link: "/about/pr",
+          },
           {
             text: "文档自定义控件",
             items:[
-              { text: "现代化超链接", link: "/pr/modernurl" },
-              { text: "MC图标", link: "/pr/mcicon" },
-              { text: "顶部题外话", link: "/pr/subtitle" },
-              { text: "尾部作者栏", link: "/pr/author" },
-              { text: "更好的超链接", link: "/pr/prettylink" },
+              { text: "现代化超链接", link: "/components/modernurl" },
+              { text: "MC图标", link: "/components/mcicon" },
+              { text: "顶部题外话", link: "/components/subtitle" },
+              { text: "尾部作者栏", link: "/components/author" },
+              { text: "更好的超链接", link: "/components/prettylink" },
             ]
-          },
+          }
         ]
-      },
-      {
-        text: "关于",
-        link: "/team/",
       },
       
     ],

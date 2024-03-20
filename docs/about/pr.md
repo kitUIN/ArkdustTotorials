@@ -40,8 +40,8 @@ npm run docs:dev
   - 文件内的`themeConfig`中的`nav`项
 
 ### 本教程自定义控件
-- [现代化超链接](/pr/modernurl)
-- [顶部题外话](/pr/subtitle)
-- [MC图标](/pr/mcicon)
-- [尾部作者栏](/pr/author)
-- [更好的超链接](/pr/prettylink)
+- [现代化超链接](/components/modernurl)
+- [顶部题外话](/components/subtitle)
+- [MC图标](/components/mcicon)
+- [尾部作者栏](/components/author)
+- [更好的超链接](/components/prettylink)
