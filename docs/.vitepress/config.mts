@@ -1,5 +1,9 @@
 import { defineConfig } from "vitepress";
 import mdItCustomAttrs from "markdown-it-custom-attrs";
+import { prettyLinkPlugin } from "./theme/plugins/prettyLink";
+import { prettyList } from "./theme/datas/prettyLinks";
+
+
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
@@ -130,6 +134,7 @@ export default defineConfig({
               { text: "MC图标", link: "/pr/mcicon" },
               { text: "顶部题外话", link: "/pr/subtitle" },
               { text: "尾部作者栏", link: "/pr/author" },
+              { text: "更好的超链接", link: "/pr/prettylink" },
             ]
           },
         ]
@@ -195,6 +200,7 @@ export default defineConfig({
       md.use(mdItCustomAttrs, "image", {
         "data-fancybox": "gallery",
       });
+      md.use(prettyLinkPlugin, prettyList);
     },
   },
 });

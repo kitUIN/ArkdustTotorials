@@ -44,3 +44,4 @@ npm run docs:dev
 - [顶部题外话](/pr/subtitle)
 - [MC图标](/pr/mcicon)
 - [尾部作者栏](/pr/author)
+- [更好的超链接](/pr/prettylink)

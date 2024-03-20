@@ -2,7 +2,7 @@
 import DefaultTheme from "vitepress/theme";
 import Writers from "./Writers.vue";
 import { useData } from "vitepress";
-import { data } from "../members.data.ts";
+import { data } from "../datas/members.data";
 const members =  data.members;
 
 const { frontmatter } = useData();

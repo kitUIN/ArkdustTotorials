@@ -8,7 +8,7 @@ import {
   VPTeamMembers
 } from 'vitepress/theme'
 
-import { data } from "../.vitepress/theme/members.data.ts";
+import { data } from "../.vitepress/theme/datas/members.data.ts";
 const members =  data.members;
 
 </script>

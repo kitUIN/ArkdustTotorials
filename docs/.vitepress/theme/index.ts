@@ -1,4 +1,5 @@
 import DefaultTheme from 'vitepress/theme'
+import './style/var.css'
 import type { Theme } from 'vitepress'
 import MyLayout from './components/MyLayout.vue'
 import ModernUrl from './components/ModernUrl.vue'
