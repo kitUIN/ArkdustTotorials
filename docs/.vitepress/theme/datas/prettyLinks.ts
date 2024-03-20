@@ -24,4 +24,9 @@ export const prettyList = [
       icon:"/icon/blockbench.png",
       color: '#096EAD',
     },
+    {
+      pattern: /https:\/\/fabricmc\.net.+/,
+      icon:"/icon/fabric.png",
+      color: null,
+    },
   ]
