@@ -2,23 +2,12 @@
 import DefaultTheme from "vitepress/theme";
 import Writers from "./Writers.vue";
 import { useData } from "vitepress";
+import { data } from "../members.data.ts";
+const members =  data.members;
+
 const { frontmatter } = useData();
 const { Layout } = DefaultTheme;
 
-const members = [
-  {
-    avatar: "/github/AW-CRK14.png",
-    name: "AW-CRK14",
-    title: "发起者",
-    links: [{ icon: "github", link: "https://github.com/AW-CRK14" }],
-  },
-  {
-    avatar: "/github/kitUIN.png",
-    name: "kitUIN",
-    title: "贡献者",
-    links: [{ icon: "github", link: "https://github.com/kitUIN" }],
-  },
-];
 
 function findWriter(writers) {
   function isWriter(element, index, array) {
