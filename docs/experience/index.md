@@ -19,4 +19,4 @@ writers:
     - [Mixin官网](https://github.com/SpongePowered/Mixin/wiki)
     - [Fabric Mixin](https://fabricmc.net/wiki/zh_cn:tutorial:mixin_introduction)
     - [耗子的博客-Mixin篇](https://mouse0w0.github.io/categories/Mixin/)
-- 所有的实现来自于编辑者的思考与尝试，因而未必是最优解。
+- 所有的实现来自于编辑者的思考与尝试，因而未必是最佳实践。

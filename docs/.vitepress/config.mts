@@ -84,7 +84,8 @@ export default defineConfig({
             link: "/experience/",
             collapsed: true,
             items: [
-                {text: "无实体碰撞", link: "/experience/no_entity_collision"}
+                {text: "无实体碰撞", link: "/experience/no_entity_collision"},
+                {text: "完美隐身", link: "/experience/perfect_invisible"}
             ]
           }
         ],

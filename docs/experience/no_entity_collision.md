@@ -12,7 +12,7 @@ writers:
 MC版本：1.20.4  
 Mod加载器版本：NeoForged-20.4.80-beta  
 混淆映射表：Parchment
-``` java
+```java
 @Mixin(LivingEntity.class)
 public abstract class LevelEntityMixin {
     @Unique
@@ -21,7 +21,7 @@ public abstract class LevelEntityMixin {
     private final Predicate<Entity> mod$alwaysFalse = entity -> false;
     
     @Redirect(method = "pushEntities", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/EntitySelector;pushableBy(Lnet/minecraft/world/entity/Entity;)Ljava/util/function/Predicate;"))
-    public Predicate<Entity> mixin$getEntities(Entity pEntity) {
+    public Predicate<Entity> mixin$getEntities(Entity entity) {
         if (((LivingEntity) (Object)this).hasEffect(ModEffects.NO_COLLISION.get())) {
             return mod$alwaysFalse;//如果实体本身拥有效果，则不对任何实体产生碰撞。
         }
