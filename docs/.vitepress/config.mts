@@ -79,6 +79,14 @@ export default defineConfig({
               },
             ],
           },
+          {
+            text: "经验学",
+            link: "/experience/",
+            collapsed: true,
+            items: [
+                {text: "无实体碰撞", link: "/experience/no_entity_collision"}
+            ]
+          }
         ],
       },
       {
