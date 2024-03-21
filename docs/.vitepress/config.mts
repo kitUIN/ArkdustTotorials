@@ -38,9 +38,12 @@ export default defineConfig({
         items: [
           { text: "基础学", link: "/base/" },
           { text: "数据学", link: "/data/" },
+          { text: "额外学", link: "/extra/"},
+          { text: "经验学", link: "/experience/"}
         ],
       },
       { text: "ModernUI", link: "/mui/" },
+      { text: "GeckoLib", link: "/geckolib/"},
       { text: "关于", link: "/about/team" },
       { text: "加入我们", link: "/about/pr" },
     ],
