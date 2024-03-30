@@ -77,6 +77,16 @@ export default defineConfig({
             ],
           },
           {
+            text: "渲染学",
+            link: "/render/",
+            items: [
+              {
+                text: "物品渲染-BEWLR",
+                link: "/render/item/bewlr"
+              },
+            ],
+          },
+          {
             text: "额外学",
             link: "/extra/",
             items: [
