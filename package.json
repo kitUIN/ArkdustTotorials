@@ -1,5 +1,6 @@
 {
   "devDependencies": {
+    "fast-glob": "^3.3.2",
     "vitepress": "^1.0.0-rc.44"
   },
   "scripts": {
@@ -9,6 +10,7 @@
   },
   "dependencies": {
     "markdown-it-custom-attrs": "^1.0.2",
+    "vite-plugin-svg-icons": "^2.0.1",
     "vue3-popper": "^1.5.0"
   }
 }
