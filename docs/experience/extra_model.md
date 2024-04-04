@@ -3,13 +3,11 @@ description: 一!物!降!1!5!
 writers:
 - AW-CRK14
 versions:
-  vanilla:
-    current:
-      text: "1.20.4"
-  loader:
-    current:
-      text: "Neoforge 20.4.80-beta"
-      loader: "neoforge"
+  id: "extra_model"
+  vanilla: "1.20.4"
+  loaders:
+    - text: "Neoforge 20.4.80-beta"
+      loader: "neoforge"  
 ---
 
 # 额外模型注册

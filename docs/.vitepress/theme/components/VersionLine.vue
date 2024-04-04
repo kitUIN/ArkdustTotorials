@@ -2,33 +2,17 @@
 import { computed, toRefs } from "vue";
 import VersionBox, { Version } from "./VersionBox.vue";
 
-type MVersion = {
-  vanilla?: Version;
-  loader?: Version;
-};
-
 interface Props {
-  versions?: MVersion;
+  versions?: Array<Version>;
 }
+withDefaults(defineProps<Props>(), {});
 
-const props = withDefaults(defineProps<Props>(), {});
-
-const vers = computed(() => {
-  let l = new Array<Version>();
-  if (props.versions?.vanilla) {
-    l.push(props.versions.vanilla);
-  }
-  if (props.versions?.loader) {
-    l.push(props.versions.loader);
-  }
-  return l;
-});
 </script>
 
 <template>
   <div class="Writers">
     <div class="container">
-        <VersionBox v-for="version in vers"  :version="version" />
+        <VersionBox v-for="version in versions"  :version="version" />
     </div>
   </div>
 </template>

@@ -3,13 +3,11 @@ description: 服务器与客户端的通讯
 writers:
   - kitUIN
 versions:
-  vanilla:
-    current:
-      text: "1.20.4"
-  loader:
-    current:
-      text: "NeoForge"
-      loader: "neoforge"
+  id: "networkindex"
+  vanilla: "1.20.4"
+  loaders:
+    - text: "NeoForge"
+      loader: "neoforge"  
 ---
 
 # 网络

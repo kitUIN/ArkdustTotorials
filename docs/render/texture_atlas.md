@@ -3,13 +3,11 @@ description: (很多很多的图片.png)
 writers:
   - AW-CRK14
 versions:
-  vanilla:
-    current:
-      text: "1.20.x"
-  loader:
-    current:
-      text: "Neoforge 20.4.80-beta"
-      loader: "neoforge"
+  id: "texture_atlas"
+  vanilla: "1.20.x"
+  loaders:
+    - text: "Neoforge 20.4.80-beta"
+      loader: "neoforge"  
 ---
 
 # TextureAtlas纹理图集

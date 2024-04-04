@@ -1,30 +1,23 @@
 <script setup lang="ts">
-import { useRouter } from "vitepress";
 
-const router = useRouter();
 
 export type VersionLink = {
   text?: string;
   type?: "info" | "tip" | "warning" | "danger";
   loader?: "forge" | "neoforge" | "fabric" | "vanilla" | "quilt";
   link?: string;
+  id?: string;
 };
 withDefaults(defineProps<VersionLink>(), {
   type: "tip",
 });
+let emit = defineEmits();
 </script>
 
 <template>
   <span
     class="VPBadge"
     :class="type"
-    :onClick="
-      () => {
-        if (link && link !== '') {
-          router.go(link);
-        }
-      }
-    "
     :style="{ cursor: link !== undefined ? 'pointer' : 'default' }"
   >
     <div class="inner">
@@ -41,6 +34,7 @@ withDefaults(defineProps<VersionLink>(), {
   align-items: center;
 }
 .VPBadge {
+  vertical-align: bottom;
   display: inline-block;
   margin-left: 2px;
   border: 1px solid transparent;

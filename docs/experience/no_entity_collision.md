@@ -3,13 +3,11 @@ description: 让我们融为一体吧
 writers:
 - AnECanSaiTin
 versions:
-  vanilla:
-    current:
-      text: "1.20.4"
-  loader:
-    current:
-      text: "Neoforge 20.4.80-beta"
-      loader: "neoforge"
+  id: "no_entity_collision"
+  vanilla: "1.20.4"
+  loaders:
+    - text: "Neoforge 20.4.80-beta"
+      loader: "neoforge"  
 ---
 
 # 无实体碰撞

@@ -3,13 +3,11 @@ description: 主动发送一些包含任意数据的网络包
 writers:
   - kitUIN
 versions:
-  vanilla:
-    current:
-      text: "1.20.4"
-  loader:
-    current:
-      text: "NeoForge"
-      loader: "neoforge"
+  id: "custompacket"
+  vanilla: "1.20.4"
+  loaders:
+    - text: "NeoForge"
+      loader: "neoforge"  
 ---
 
 # 自定义数据包
