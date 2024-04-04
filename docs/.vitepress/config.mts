@@ -55,8 +55,7 @@ export default defineConfig({
           { text: "概述", link: "/introduction" },
           { text: "开发环境配置", link: "/environment" },
           {
-            text: "基础学",
-            link: "/base/",
+            text: "基础学", link: "/base/",
             items: [
               { text: "模组准备", link: "/base/prepare" },
               { text: "注册 基础", link: "/base/registration" },
@@ -64,45 +63,33 @@ export default defineConfig({
             ],
           },
           {
-            text: "数据学",
-            link: "/data/",
+            text: "数据学", link: "/data/",
             items: [
-              {
-                text: "网络",
-                link: "/data/network/",
+              {text: "网络", link: "/data/network/",
                 items: [
                   { text: "自定义数据包", link: "/data/network/custompacket" },
-                ],
-              },
-            ],
+                ]
+              }
+            ]
           },
-          {
-            text: "渲染学",
-            link: "/render/",
+          {text: "渲染学", link: "/render/",
             items: [
-              {
-                text: "物品渲染-BEWLR",
-                link: "/render/item/bewlr"
-              },
-            ],
+              {text: "TextureAtlas纹理图集", link: "/render/texture_atlas"},
+              {text: "物品渲染-BEWLR", link: "/render/item/bewlr"},
+            ]
           },
           {
-            text: "额外学",
-            link: "/extra/",
+            text: "额外学", link: "/extra/",
             items: [
-              {
-                text: "多模块",
-                link: "/extra/multi_module",
-              },
+              {text: "多模块", link: "/extra/multi_module",},
             ],
           },
           {
-            text: "经验学",
-            link: "/experience/",
-            collapsed: true,
+            text: "经验学", link: "/experience/", collapsed: true,
             items: [
                 {text: "无实体碰撞", link: "/experience/no_entity_collision"},
-                {text: "完美隐身", link: "/experience/perfect_invisible"}
+                {text: "完美隐身", link: "/experience/perfect_invisible"},
+                {text: "额外模型注册", link: "/experience/extra_model"}
             ]
           }
         ],
