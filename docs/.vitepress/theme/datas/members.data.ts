@@ -8,7 +8,7 @@ const members = [
     {
       avatar: "/github/kitUIN.png",
       name: "kitUIN",
-      title: "贡献者",
+      title: "贡献者/前端",
       links: [{ icon: "github", link: "https://github.com/kitUIN" }],
     },
     {

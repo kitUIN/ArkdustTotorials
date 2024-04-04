@@ -1,6 +1,7 @@
 <script setup>
 import DefaultTheme from "vitepress/theme";
 import Writers from "./Writers.vue";
+import VersionLine from "./VersionLine.vue";
 import { useData } from "vitepress";
 import { data } from "../datas/members.data";
 const members =  data.members;
@@ -27,6 +28,7 @@ function findWriter(writers) {
 <template>
   <Layout>
     <template #doc-before>
+      <VersionLine :versions="frontmatter.versions"></VersionLine>
       <p style="color: grey">{{ frontmatter.description }}</p>
     </template>
     <template #doc-footer-before>

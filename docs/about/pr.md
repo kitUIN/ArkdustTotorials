@@ -45,3 +45,4 @@ npm run docs:dev
 - [MC图标](/components/mcicon)
 - [尾部作者栏](/components/author)
 - [更好的超链接](/components/prettylink)
+- [多版本](/components/versions)

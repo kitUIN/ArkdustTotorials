@@ -2,9 +2,8 @@ import { defineConfig } from "vitepress";
 import mdItCustomAttrs from "markdown-it-custom-attrs";
 import { prettyLinkPlugin } from "./theme/plugins/prettyLink";
 import { prettyList } from "./theme/datas/prettyLinks";
-
-
-
+import path from 'path'
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
   head: [
@@ -138,6 +137,7 @@ export default defineConfig({
               { text: "顶部题外话", link: "/components/subtitle" },
               { text: "尾部作者栏", link: "/components/author" },
               { text: "更好的超链接", link: "/components/prettylink" },
+              { text: "多版本", link: "/components/versions" },
             ]
           }
         ]
@@ -202,4 +202,14 @@ export default defineConfig({
       md.use(prettyLinkPlugin, prettyList);
     },
   },
+  vite: {
+    plugins:[
+      createSvgIconsPlugin({
+        iconDirs: [path.resolve(process.cwd(), "docs/.vitepress/svgs")], // icon存放的目录
+        symbolId: "icon-[name]", // symbol的id
+        inject: "body-last", // 插入的位置
+        customDomId: "__svg__icons__dom__" // svg的id
+      }),
+    ]
+  }
 });
