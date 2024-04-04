@@ -10,7 +10,7 @@ writers:
 ```yml
 ---
 versions: # 多版本模式
-  id: "versions" # 唯一标识符, 用于自动识别文章的多版本模式, 不填就不会自动识别
+  id: "versions" # 唯一标识符, 用于自动识别相同id的文章的多个版本, 不填就不会自动识别
   vanilla: "1.20.4" # 原版版本
   loaders:  # 模组加载器版本
     - text: "NeoForge-20.4.80-beta"
