@@ -20,5 +20,9 @@ features:
       src: /icon/neo.svg
     title: Minecraft Neoforge 1.20.4
     details: 快速入门编写 Neoforge 1.20.4 模组
+  - icon:
+      src: /icon/muiicon.png
+    title: Modern UI 模组使用笔记
+    details: 记录使用Modern UI 模组绘制界面
 ---
 
