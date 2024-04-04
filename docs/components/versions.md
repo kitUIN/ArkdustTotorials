@@ -18,7 +18,7 @@ versions: # 多版本模式
         link: "/text/hellowrold1.14.4" # 其他版本号对应的文章链接
   loader:  # 模组加载器版本
     current:  # 当前版本
-      text: "NeoForged >=20.4.80-beta"  # 当前版本号
+      text: "NeoForge-20.4.80-beta"  # 当前版本号
       loader: "neoforge"  # 模组加载器
     others:
       - text: "NeoForged-20.4.78" # 其他版本号

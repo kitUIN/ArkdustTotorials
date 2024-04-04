@@ -2,13 +2,18 @@
 description: 一!物!降!1!5!
 writers:
 - AW-CRK14
+versions:
+  vanilla:
+    current:
+      text: "1.20.4"
+  loader:
+    current:
+      text: "Neoforge 20.4.80-beta"
+      loader: "neoforge"
 ---
 
 # 额外模型注册
 在一些情况下，我们会希望让游戏加载一些没有被物品，方块或其它地方引用的模型以帮助我们进行自定义的渲染。这种情况下，我们可以通过如下方式快速，便捷地使用资源路径引导游戏注册。
-
-MC版本：1.20.4  
-Mod加载器版本：NeoForged-20.4.80-beta
 
 ---
 

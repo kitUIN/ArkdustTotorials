@@ -2,14 +2,18 @@
 description: 让我们融为一体吧
 writers:
 - AnECanSaiTin
+versions:
+  vanilla:
+    current:
+      text: "1.20.4"
+  loader:
+    current:
+      text: "Neoforge 20.4.80-beta"
+      loader: "neoforge"
 ---
 
 # 无实体碰撞
 在某些情况下，你可能需要让实体之间不会发生碰撞。这个案例实现了在实体拥有***无碰撞 NO_COLLISION*** 效果时取消碰撞判定。
-
-MC版本：1.20.4  
-Mod加载器版本：NeoForged-20.4.80-beta
-
 ---
 
 ```java

@@ -2,13 +2,18 @@
 description: 那里有盔甲在挖矿😨
 writers:
 - AnECanSaiTin
+versions:
+  vanilla:
+    current:
+      text: "1.20.4"
+  loader:
+    current:
+      text: "Neoforge 20.4.80-beta"
+      loader: "neoforge"
 ---
 
 # 完美隐身
 原版的隐身效果只能隐去身形，盔甲与手持物品还是会显示出来，因此显得过于鸡肋。这个案例实现了在实体拥有***完美隐身 PERFECT_INVISIBLE*** 效果时完全不渲染。
-
-MC版本：1.20.4  
-Mod加载器版本：NeoForged-20.4.80-beta
 
 ---
 
