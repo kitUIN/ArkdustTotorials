@@ -26,6 +26,7 @@ withDefaults(defineProps<Props>(), {});
 
 <style scoped>
 .WriterItem {
+  cursor: pointer;
   display: flex;
   flex-direction: column;
   gap: 2px;
