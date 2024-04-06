@@ -2,6 +2,12 @@
 description: 前排提醒：如果不是做物品动画的需求，请尽量使用BakedModel。另外，请尽量保证单个mod创建的BEWLR实例数量为一！
 writers:
   - AW-CRK14
+versions:
+   id: "bewlr"
+   vanilla: "1.20.x"
+   loaders:
+      - text: "Neoforge 20.4.80-beta"
+        loader: "neoforge"  
 ---
 
 # 物品渲染 之<br> BEWLR(BlockEntityWithoutLevelRenderer)
