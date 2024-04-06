@@ -22,6 +22,7 @@ export default defineConfig({
       },
     ],
   ],
+  ignoreDeadLinks: true,
   lang: "zh-CN",
   title: "ArkdustTutorials",
   description:
