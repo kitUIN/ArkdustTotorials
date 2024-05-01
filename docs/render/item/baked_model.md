@@ -234,3 +234,27 @@ public class SkilletModel implements BakedModel {
 `BakedModel`还需要进行注册，以替换物品原本的，由json文件生成的模型。`ModelEvent.ModifyBakingResult`事件可以帮助我们完成这一过程，这一事件在Mod线，客户端上触发。
 
 在事件中，使用`getModel()`获取模型列表，并向其中放入新的键对值。其中键的资源路径应使用`new ModelResourceLoaction([物品的注册id],"inventory")`，键则根据需求传入上面我们创建的`BakedModel`的实例即可。
+
+## 模型的烘培
+
+虽然我们之前提到过，`UnbakedModel`包含了基本的形状，但对于物品模型而言，似乎其形状也是动态生成的。(注:未经过严密考证)
+
+因此，在获得任意物品的`BlockModel`后，原则上我们就可以使用
+
+```java
+TextureAtlasSprite sprite = someSprite();//替换成你的材质获取
+BakedModel baked = BreakdownCore.getItemModelgen().generateBlockModel(m -> sprite, shapeModel)
+                        .bake(bakery.new ModelBakerImpl((m,n) -> sprite, bakeName),
+                                m -> sprite,
+                                new SimpleModelState(Transformation.identity()),
+                                bakeName
+                        );
+```
+
+来以原本物品的基本设置完成贴图-模型的转换。
+
+这一过程不建议使用来自其他atlas的sprite，这有可能造成问题。
+
+## 额外的笔记*
+
+`BlockModel`可以设置渲染类型。参见[TextureAtlas篇笔记部分](../texture_atlas.md#额外的笔记)
