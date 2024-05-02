@@ -240,7 +240,7 @@ public class MaterialSpriteAttachGen extends SpriteSourceProvider {
 
 创建完成后，游戏将会按照id，在指定的位置索取atlas的json配置文件——就像上面的原版atlas一样。之后的缝合等内容也均会由其自动完成。
 
-如果您需要使用一些特殊的材质处理，您可能需要覆写`reload`方法，并将`loadAndStitch`方法部分的内部逻辑进行再处理以适应您的需求。参考[这篇内容]()获取更多关于材质动态生成的信息。
+如果您需要使用一些特殊的材质处理，您可能需要覆写`reload`方法，并将`loadAndStitch`方法部分的内部逻辑进行再处理以适应您的需求。参考[这篇内容](native_image.md)获取更多关于材质动态生成的信息。
 
 在创建好内容后，您需要监听`RegisterClientReloadListenersEvent`事件(Mod总线，客户端)并将一实例使用`registerReloadListener`方法注册即可。
 

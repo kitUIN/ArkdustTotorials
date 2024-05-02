@@ -75,6 +75,8 @@ export default defineConfig({
           {text: "渲染学", link: "/render/",
             items: [
               {text: "纹理图集", link: "/render/texture_atlas"},
+              {text: "原生图片*", link: "/render/native_image"},
+              {text: "物品渲染-变色", link: "/render/item/color"},
               {text: "物品渲染-BEWLR", link: "/render/item/bewlr"},
               {text: "物品渲染-已烘培模型", link: "/render/item/baked_model"},
             ]
