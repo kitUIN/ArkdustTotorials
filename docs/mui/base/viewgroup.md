@@ -24,15 +24,19 @@ writers:
 
 ## RelativeLayout
 
-关系布局是一种比较自由的布局，可以指定一个子视图在布局中的相对位置，也可以设置其对齐规则。
+关系布局是一种比较自由的布局，可以指定一个子视图在布局中的相对位置，也可以设置其对齐规则。对于其位置的调整，我们可以使用`setX``setY`或者在`LayoutParams`里使用`setMarginsRelative`方法实现。不过，二者的效果并不完全相同，[前者在实际使用中具有二倍特性](view.md#相对位置设置)。因此，我建议您使用后者
 
+::: warning :warning: 注意：
 需要注意的是，`RelativeLayout`使用的对齐规则与常用的`Gravity`存在差异。为了实现对齐效果，我们需要创建一个`RelativeLayout.LayoutParams`实例，然后使用`addRule`方法添加对齐规则。规则可以`RelativeLayout`类下的常量处找到。比如，我们想使一个视图布局在右上角，我们可以创建这样一个params：
 
 ```java
-RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(group.dp(20),group.dp(20));
-params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);
-params.addRule(RelativeLayout.ALIGN_PARENT_TOP);
+void a(){
+    RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(group.dp(20),group.dp(20));
+    params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);//与父对象右侧对齐，类似于Gravity.RIGHT。
+    params.addRule(RelativeLayout.CENTER_VERTICAL);//在父对象竖直方向上居中。
+}
 ```
+:::
 
 再在加入父group时传入params即可。
 
@@ -53,23 +57,25 @@ public static final int SHOW_DIVIDER_END = 4;
 
 分别对应无间隔渲染，起始位置渲染，中间位置渲染，结束位置渲染。若要设置多个，请使用|符号连接。`setDividerDrawable`方法用于提供一个渲染间隔条的渲染器。
 
-设置间隔与元素之间的距离：`setDividerPadding`方法可以设置每条间隔与元素之间的距离，单位是像素。
+`setDividerPadding`方法可以设置分隔线在相应方向上的拓展距离。
 
 设置子view的相对位置：子元素在`Group`中的排列趋势可以通过设置`Group`的`Gravity`决定，使用`setHorizontalGravity`与`setVerticalGravity`可以引导子组件从某一方向开始排列。
 
 ```java
-LinearLayout base = new LinearLayout(getContext());
-base.setShowDividers(LinearLayout.SHOW_DIVIDER_NONE);
-base.setOrientation(LinearLayout.VERTICAL);
-base.setDividerPadding(base.dp(5));
- 
-RelativeLayout topLayout = new RelativeLayout(getContext());
+void a(){
+    LinearLayout base = new LinearLayout(getContext());
+    base.setShowDividers(LinearLayout.SHOW_DIVIDER_NONE);
+    base.setOrientation(LinearLayout.VERTICAL);
+    base.setDividerPadding(base.dp(5));
 
-//添加一些子View
+    RelativeLayout topLayout = new RelativeLayout(getContext());
 
-topLayout.setBackground(withBorder());//测试用，设置view的背景。
-base.setVerticalGravity(Gravity.BOTTOM); 
-base.addView(topLayout);
+    //添加一些子View
+
+    topLayout.setBackground(withBorder());//测试用，设置view的背景。
+    base.setVerticalGravity(Gravity.BOTTOM);
+    base.addView(topLayout);
+}
 ```
 
 这样我们的`topLayout`就会出现在`base`组件的底部了。
@@ -91,14 +97,16 @@ base.addView(topLayout);
 下面是一段`Spinner`的代码示例，摘自MUI的测试页面代码：
 
 ```java
-Spinner spinner = new Spinner(getContext());
-v = spinner;
-ArrayList<String> list = new ArrayList<>(FontFamily.getSystemFontMap().keySet());
-list.sort(null);
-spinner.setAdapter(new ArrayAdapter<>(getContext(), list));
-p = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-        ViewGroup.LayoutParams.WRAP_CONTENT);
-spinner.setMinimumWidth(dp(240));
+void a(){
+    Spinner spinner = new Spinner(getContext());
+    v = spinner;
+    ArrayList<String> list = new ArrayList<>(FontFamily.getSystemFontMap().keySet());
+    list.sort(null);
+    spinner.setAdapter(new ArrayAdapter<>(getContext(), list));
+    p = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
+            ViewGroup.LayoutParams.WRAP_CONTENT);
+    spinner.setMinimumWidth(dp(240));
+}
 ```
 
 这个示例创建了一个下拉栏，里面包含所有系统安装了的字体的名字。
@@ -108,16 +116,18 @@ spinner.setMinimumWidth(dp(240));
 记得在`Fragment`阶段我们提到的“Fragment可以组合”吗？`FragmentContainerView`可以用来记录一个`Fragment`，并把它像`View`一样加载进其它`ViewGroup`中，加载整个`Fragment`。`FragmentContainerView`需要记录这个组件的`id`，因此您应当在`Fragment`中专门定义一个常量来帮助处理。就像这样：
 
 ```java
-final int tabId = 0x200;//这地方随你搞
-getChildFragmentManager().beginTransaction()
-        .replace(tabId, MarkdownFragment.class, null, "markdown")
-        .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
-        .setReorderingAllowed(true)
-        .commit();
+void a(){
+    final int tabId = 0x200;//这地方随你搞
+    getChildFragmentManager().beginTransaction()
+            .replace(tabId, MarkdownFragment.class, null, "markdown")
+            .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
+            .setReorderingAllowed(true)
+            .commit();
 
-FragmentContainerView tabContainer = new FragmentContainerView(getContext());
-tabContainer.setId(tabId);
-base.addView(tabContainer);
+    FragmentContainerView tabContainer = new FragmentContainerView(getContext());
+    tabContainer.setId(tabId);
+    base.addView(tabContainer);
+}
 ```
 
 这通常和按钮等功能结合，用于处理内部分页。您可以参考`icyllis.modernui.mc.CenterFragment2`下的代码，查看更多用法。

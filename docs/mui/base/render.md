@@ -92,7 +92,9 @@ void draw(@NonNull Canvas canvas);
 
 获取大小：`getBound()`方法可以获取到默认范围。
 
-渲染图形：使用`drawRect`方法渲染矩形；使用`drawRoundRect`方法渲染圆角矩形，其中传入的一个`int`数值为圆角半径；使用`drawAct`绘制扇形，其中`startAngle`是起始角度，默认水平向右顺时针。`SweepAngle`是扇形范围的角度。单位为度，即一整圈为360；`drawBezier`方法绘制一条贝塞尔曲线。`DrawImage`方法绘制图片。其它内容请自行查看，比如绘制线，圆等，在此不一一赘述。
+渲染图形：使用`drawRect`方法渲染矩形；使用`drawRoundRect`方法渲染圆角矩形，其中传入的一个`int`数值为圆角半径，并且可以指定绘制哪些边上的角(使用Gravity中的边代码)；使用`drawAct`绘制扇形，其中`startAngle`是起始角度，默认水平向右顺时针。`SweepAngle`是扇形范围的角度。单位为度，即一整圈为360；`drawBezier`方法绘制一条贝塞尔曲线。`DrawImage`方法绘制图片。其它内容请自行查看，比如绘制线，圆等，在此不一一赘述。
+
+对于`drawRect`与`drawRoundRect`均有其衍生的渐变填充方法，分别是`drawRectGradient`与`drawRoundRectGradient`。在这两种方法中，我们可以指定目标四个角上的着色，这一过程将使`Paint`中预定的颜色被忽略。
 
 裁剪画布：`clipRect`方法可以裁剪画布的范围。在裁剪之后运行的代码超出范围的部分不会被渲染。
 
