@@ -22,6 +22,8 @@ writers:
 
 `setMargins`与`setMarginsRelative`方法可以设置子组件的收缩或扩张(好像不能扩张)，四个值分别是原始位置相对于左，上，右，下边的收缩量。
 
+`addRule`方法可以为目标配置布局相关性关系，使用多个`addRule`方法以添加多个关系。
+
 ## RelativeLayout
 
 关系布局是一种比较自由的布局，可以指定一个子视图在布局中的相对位置，也可以设置其对齐规则。对于其位置的调整，我们可以使用`setX``setY`或者在`LayoutParams`里使用`setMarginsRelative`方法实现。不过，二者的效果并不完全相同，[前者在实际使用中具有二倍特性](view.md#相对位置设置)。因此，我建议您使用后者
@@ -36,6 +38,10 @@ void a(){
     params.addRule(RelativeLayout.CENTER_VERTICAL);//在父对象竖直方向上居中。
 }
 ```
+
+请注意，`ALIGN_PARENT_RIGHT`会倾向于使组件的位置尽可能右，因此可能会导致在横向布局参数被设置为-2(`WARP_CONTENT`)的时候整个布局拉的很长。在这时，您或许需要考虑使用`RelativeLayout.ALIGN_RIGHT`
+
+若想保持两个子组件在一个向左对齐，一个向右对齐且在压缩状态下不相互叠合，需要为右侧的一个设置`RelativeLayout.RIGHT_OF`或为左侧的设置`RelativeLayout.LEFT_OF`。请保证不出现循环依赖，这将导致问题。
 :::
 
 再在加入父group时传入params即可。

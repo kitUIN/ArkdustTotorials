@@ -105,7 +105,7 @@ Hint对应的内容是文本内容为空时的内容，常用于文本编辑框�
 监听器(Listener)用于处理这个对象在活跃时的一系列操作。在idea中输入Listener可以帮助你找到一系列监听器的处理方法。对于一个监听器，一般可以用以下代码来创建一个lambda表达式：
 
 ```java
-(view, motionEvent)-> {……}
+Func n = (view, motionEvent)-> {};
 ```
 
 其中前者view是本组件，而后者是监听到的活动。可以通过`getAction`方法获取到对应的操作类型的索引编号，这些编号的对应值可以在`MotionEvent`类下找到。
@@ -127,13 +127,15 @@ post方法用于向总线提交一个可执行目标(Runnable)，这些内容将
 在目标中重复调用`postDelayed`方法以达成周期循环目的。例如：
 
 ```java
-runnable = ()-> {
+Func runnable = ()-> {
     ticker += flag ? 1 : -1;
     ticker = Math.clamp(0, 20, ticker);
     postDelayed(runnable,50);
 };
 
-postDelayed(runnable,50);
+void inSomeMethod(){
+    postDelayed(runnable,50);
+}
 ```
 
 这样每50毫秒将会执行一次，也就是每秒二十次，类似原有的tick方法。
@@ -159,15 +161,17 @@ postDelayed(runnable,50);
 `SwitchButton`用于创造一个可展开式栏。参考代码：
 
 ```java
-SwitchButton switchButton = new SwitchButton(getContext());
-v = switchButton;
-switchButton.setOnCheckedChangeListener((button, checked) -> {
-    if (checked) {
-        button.post(() -> addView(mTextView, 2));
-    } else {
-        button.post(() -> removeView(mTextView));
-    }
-});
+void someMethod(){
+    SwitchButton switchButton = new SwitchButton(getContext());
+    v = switchButton;
+    switchButton.setOnCheckedChangeListener((button, checked) -> {
+        if (checked) {
+            button.post(() -> addView(mTextView, 2));
+        } else {
+            button.post(() -> removeView(mTextView));
+        }
+    });
+}
 ```
 
 `SeekBar`用于创造一个可拖动的滑动条。
