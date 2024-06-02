@@ -2,6 +2,7 @@
 writers:
   - AW-CRK14
 ---
+
 # 将Mui加载进项目依赖
 
 首先我们需要配置build.gradle文件。
@@ -20,13 +21,24 @@ maven {
 }
 ```
 
+添加库配置：
+
+```gradle
+configurations {
+    libraries
+    // This will make sure that all dependencies that you add to the libraries configuration will also be added to the implementation configuration
+    // This way, you only need one dependency declaration for both runtime and compile dependencies
+    implementation.extendsFrom libraries
+}
+```
+
 然后在dependencies部分添加mui的编译与运行依赖：
 
 ```gradle
 // Modern UI core framework
-library "icyllis.modernui:ModernUI-Core:${modernui_version}"
+libraries "icyllis.modernui:ModernUI-Core:${modernui_version}"
 // Modern UI core extensions
-library "icyllis.modernui:ModernUI-Markdown:${modernui_version}"
+libraries "icyllis.modernui:ModernUI-Markdown:${modernui_version}"
 // Modern UI for Minecraft Forge
 compileOnly "curse.maven:modern-ui-352491:5040141"
 runtimeOnly "curse.maven:modern-ui-352491:5040141"
