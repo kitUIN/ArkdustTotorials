@@ -57,7 +57,9 @@ setTop/setButtom/setLeft/setRight原则上可以控制组件相对父组件的�
 为了设置重力，您可以使用`setGravity`方法，其需要的参数可以在`Gravity`类下找到需要的常量。如果您要指定多个`Gravity`特征，比如水平居中且靠下，您应该使用" | "符号连接，例如：
 
 ```java
-setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
+void someMethod(){
+    setGravity(Gravity.CENTER_HORIZONTAL | Gravity.BOTTOM);
+}
 ```
 
 
@@ -111,6 +113,20 @@ Func n = (view, motionEvent)-> {};
 其中前者view是本组件，而后者是监听到的活动。可以通过`getAction`方法获取到对应的操作类型的索引编号，这些编号的对应值可以在`MotionEvent`类下找到。
 
 如果一个监听器监听的类型与尝试匹配的`MotionEvent`不相符，这个listener将不会被触发。比如，一个OnTouchListener中获取到的action index不会是MotionEvent.ACTION\_HOVER\_MOVE对应的值。
+
+对于鼠标点击的事件监听器，可以用`setOnClickListener`来设置，但这种方法只能得到点击这一事实，而无法判断是什么键点击，在什么位置点击等。如果需要对按键进行判断，可以使用`setOnTouchListener`，其中的`MotionEvent`可以获取到按键。如下是一个示例:
+
+```java
+void someMethod(){
+    setOnTouchListener((view, motionEvent) -> {
+        if (motionEvent.getActionButton() == MotionEvent.BUTTON_PRIMARY) {
+            System.out.println("点击左键！位置：{x=" + motionEvent.getX() + ",y=" + motionEvent.getY() + "}");
+        } else if (motionEvent.getActionButton() == MotionEvent.BUTTON_SECONDARY){
+            System.out.println("点击右键！键盘状态：{alt=" + motionEvent.isAltPressed() + ",shift=" + motionEvent.isShiftPressed() + "}");
+        }
+    });
+}
+```
 
 返回值表示这个监听器是否被消费。如果已被消费，其它没有执行的同种Listener将不会继续执行。
 
