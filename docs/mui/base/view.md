@@ -24,7 +24,7 @@ writers:
 
 ### 高度与宽度设置
 
-`setWidth`与`setHeight`可以分别设置组件的宽度和高度。默认数值为0。如果有特殊需求，请参阅`ViewGroup`部分的[LayoutParams条目](/mui/base/viewgroup#LayoutParams)。
+`setWidth`与`setHeight`可以分别设置组件的宽度和高度。默认数值为0。如果有特殊需求，请参阅`ViewGroup`部分的[LayoutParams条目](./viewgroup#LayoutParams)。
 
 ### 相对位置设置
 
