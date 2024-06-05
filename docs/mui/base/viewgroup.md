@@ -28,7 +28,6 @@ writers:
 
 关系布局是一种比较自由的布局，可以指定一个子视图在布局中的相对位置，也可以设置其对齐规则。对于其位置的调整，我们可以使用`setX``setY`或者在`LayoutParams`里使用`setMarginsRelative`方法实现。不过，二者的效果并不完全相同，[前者在实际使用中具有二倍特性](view.md#相对位置设置)。因此，我建议您使用后者
 
-::: warning :warning: 注意：
 需要注意的是，`RelativeLayout`使用的对齐规则与常用的`Gravity`存在差异。为了实现对齐效果，我们需要创建一个`RelativeLayout.LayoutParams`实例，然后使用`addRule`方法添加对齐规则。规则可以`RelativeLayout`类下的常量处找到。比如，我们想使一个视图布局在右上角，我们可以创建这样一个params：
 
 ```java
@@ -42,6 +41,26 @@ void a(){
 请注意，`ALIGN_PARENT_RIGHT`会倾向于使组件的位置尽可能右，因此可能会导致在横向布局参数被设置为-2(`WARP_CONTENT`)的时候整个布局拉的很长。在这时，您或许需要考虑使用`RelativeLayout.ALIGN_RIGHT`
 
 若想保持两个子组件在一个向左对齐，一个向右对齐且在压缩状态下不相互叠合，需要为右侧的一个设置`RelativeLayout.RIGHT_OF`或为左侧的设置`RelativeLayout.LEFT_OF`。请保证不出现循环依赖，这将导致问题。
+
+::: warning :warning: 注意：
+在`RelativeLayout.RIGHT_OF` `RelativeLayout.ALIGN_RIGHT`等存在相关性的布局约束上，需要指定相关目标。比如说，现在存在`a` `b` `c`，其中`a`是后二者的父组件，我们想让`b`在`a`中的右侧对齐，且保证不会与左侧的`c`重叠：
+
+```java
+void onCreateView(){
+    RelativeLayout a = new RelativeLayout(getContext());
+    View b = new View(getContext());
+    View c = new View(getContext());
+    //......
+    //下面是需要额外设置的内容
+    a.setId(20001);//你可以设定为任一正int值，但需要保证唯一性。在未设置时，所有view的id都是-1
+    c.setId(20002);//同样，保证唯一性
+    RelativeLayout.LayoutParams para = new RelativeLayout.LayoutParams(-2, -2);//大小为包围内容
+    para.addRule(RelativeLayout.ALIGN_RIGHT,20001);//设置与id=20001的组件(a)的右侧对齐
+    para.addRule(RelativeLayout.RIGHT_OF,20002);//设置排布于id=20002的组件(c)的右侧
+    a.addView(b,para);
+}
+```
+
 :::
 
 再在加入父group时传入params即可。
