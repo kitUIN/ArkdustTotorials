@@ -2,23 +2,35 @@
 writers:
   - AW-CRK14
 ---
+
 # 渲染(Render)
 
-`Render`渲染是程序为用户在屏幕上展示可视化内容的过程。在mui系统中，大部分渲染由`onDraw`方法进行，而`Drawable`类则是用于向画布（Canvas）上添加新的内容。对于一些常用的渲染，mui已经提供了`Drawable`的子类。
+`Render`渲染是程序为用户在屏幕上展示可视化内容的过程。在mui系统中，大部分渲染由`onDraw`方法进行，而`Drawable`
+类则是用于向画布（Canvas）上添加新的内容。对于一些常用的渲染，mui已经提供了`Drawable`的子类。
 
-对于一个`View`，可以使用`setBackground`设置其渲染。特别的，对于`CompoundButton`，可以使用`setButtonDrawable`来设置其额外渲染，但我目前还没有测试出其有什么用。
+对于一个`View`，可以使用`setBackground`设置其渲染。特别的，对于`CompoundButton`，可以使用`setButtonDrawable`
+来设置其额外渲染，但我目前还没有测试出其有什么用。
 
 ## Drawable
 
-> A Drawable is a general abstraction for “something that can be drawn.” Most often you will deal with Drawable as the type of resource retrieved for drawing things to the screen; the Drawable class provides a generic API for dealing with an underlying visual resource that may take a variety of forms. Unlike a View, a Drawable does not have any facility to receive events or otherwise interact with the user
+> A Drawable is a general abstraction for “something that can be drawn.” Most often you will deal with Drawable as the
+> type of resource retrieved for drawing things to the screen; the Drawable class provides a generic API for dealing
+> with
+> an underlying visual resource that may take a variety of forms. Unlike a View, a Drawable does not have any facility
+> to
+> receive events or otherwise interact with the user
 
-> 一个可渲染目标(Drawable)是一个"可以被绘制的东西"的抽象父类。大多数时候，您会将其用于检索资源并绘制到屏幕上。可渲染目标类提供了一个通用的接口，用于处理多种形式的底层视觉资源（注：比如说，图片，纯色，线框）。与视图(View)不同，一个可渲染目标不具有任何可以接受事件或着说用户输入的方法（注：动画效果除外）。
+> 一个可渲染目标(Drawable)是一个"可以被绘制的东西"
+>
+的抽象父类。大多数时候，您会将其用于检索资源并绘制到屏幕上。可渲染目标类提供了一个通用的接口，用于处理多种形式的底层视觉资源（注：比如说，图片，纯色，线框）。与视图(
+> View)不同，一个可渲染目标不具有任何可以接受事件或着说用户输入的方法（注：动画效果除外）。
 
 ### ColorDrawable
 
 在创建一个`ColorDrawable`实例时，通过传入一个colorInt，可以设置这个`ColorDrawable`的颜色。
 
-颜色混合模式选择：`setTintBlendMode`方法可以设置混合的模式。具体的可选项可以打开`icyllis.modernui.graphics.BlendMode`类自行查看。
+颜色混合模式选择：`setTintBlendMode`方法可以设置混合的模式。具体的可选项可以打开`icyllis.modernui.graphics.BlendMode`
+类自行查看。
 
 设置边界：使用`setBounds`方法可以设置画布的渲染范围的边界。两组坐标分别是其在画布上位置的起始点与结束点。
 
@@ -48,7 +60,8 @@ writers:
 
 `ImageDrawable`用于在位置渲染一张贴图。
 
-构造方法需要一个`Image`类，可以用过`Image.create(namespace,path)`获取到资源路径中的一个图片。Path中应指定文件的后缀，比如`.png`和`.jpg`等。构造方法中的同理。
+构造方法需要一个`Image`类，可以用过`Image.create(namespace,path)`
+获取到资源路径中的一个图片。Path中应指定文件的后缀，比如`.png`和`.jpg`等。构造方法中的同理。
 
 ## DrawableWrapper
 
@@ -56,7 +69,9 @@ writers:
 
 ## DrawableContainer
 
-`DrawableContainer`是一种特殊的`Drawable`，可以同时保有多种`Drawable`并按照一定方法选择将会使用的`Drawable`。其最常用的子类为`StateListDrawable`，其特别之处在于可以为不同状态指定不同的`Drawable`，被指定的状态可以在`StateSet.get(StateSet.xxx)`找到。
+`DrawableContainer`是一种特殊的`Drawable`，可以同时保有多种`Drawable`并按照一定方法选择将会使用的`Drawable`
+。其最常用的子类为`StateListDrawable`，其特别之处在于可以为不同状态指定不同的`Drawable`
+，被指定的状态可以在`StateSet.get(StateSet.xxx)`找到。
 
 `setEnterFadeDuration`与`setExitFadeDuration`方法可以指定渲染变化时的过渡时间。
 
@@ -76,7 +91,8 @@ public static void addBackground(View view) {
 }
 ```
 
-这段代码创建了一个半透明白色圆角矩形，并将其添加到`StateListDrawable`中，指定了其显示的条件为`VIEW_STATE_HOVERED`也就是鼠标在组件上时。最后设置了淡入和淡出时间为250毫秒。
+这段代码创建了一个半透明白色圆角矩形，并将其添加到`StateListDrawable`中，指定了其显示的条件为`VIEW_STATE_HOVERED`
+也就是鼠标在组件上时。最后设置了淡入和淡出时间为250毫秒。
 
 ## Draw
 
@@ -92,12 +108,33 @@ void draw(@NonNull Canvas canvas);
 
 获取大小：`getBound()`方法可以获取到默认范围。
 
-渲染图形：使用`drawRect`方法渲染矩形；使用`drawRoundRect`方法渲染圆角矩形，其中传入的一个`int`数值为圆角半径，并且可以指定绘制哪些边上的角(使用Gravity中的边代码)；使用`drawAct`绘制扇形，其中`startAngle`是起始角度，默认水平向右顺时针。`SweepAngle`是扇形范围的角度。单位为度，即一整圈为360；`drawBezier`方法绘制一条贝塞尔曲线。`DrawImage`方法绘制图片。其它内容请自行查看，比如绘制线，圆等，在此不一一赘述。
+渲染图形：使用`drawRect`方法渲染矩形；使用`drawRoundRect`方法渲染圆角矩形，其中传入的一个`int`
+数值为圆角半径，并且可以指定绘制哪些边上的角(使用Gravity中的边代码)；使用`drawAct`绘制扇形，其中`startAngle`
+是起始角度，默认水平向右顺时针。`SweepAngle`是扇形范围的角度。单位为度，即一整圈为360；`drawBezier`
+方法绘制一条贝塞尔曲线。`DrawImage`方法绘制图片。其它内容请自行查看，比如绘制线，圆等，在此不一一赘述。
 
-对于`drawRect`与`drawRoundRect`均有其衍生的渐变填充方法，分别是`drawRectGradient`与`drawRoundRectGradient`。在这两种方法中，我们可以指定目标四个角上的着色，这一过程将使`Paint`中预定的颜色被忽略。
+对于`drawRect`与`drawRoundRect`均有其衍生的渐变填充方法，分别是`drawRectGradient`与`drawRoundRectGradient`
+。在这两种方法中，我们可以指定目标四个角上的着色，这一过程将使`Paint`中预定的颜色被忽略。
 
 裁剪画布：`clipRect`方法可以裁剪画布的范围。在裁剪之后运行的代码超出范围的部分不会被渲染。
 
-描边模式设置：`setStroke`方法可以设置是否开启描边模式，如果否则会填充图案。`setStrokeCap`设置描边端点的类型，可以在Paint.CAP\_...找到。`setStrokeWidth`设置描边宽度。`setStrokeJoin`设置描边转折处拐角形状，`setStrokeAlign`设置描边相对图形的侧，比如外侧，居中，内侧。`setStrokeMiter`可以将描边转折变为弧形转折，参数为弧形角度。
+描边模式设置：`setStroke`方法可以设置是否开启描边模式，如果否则会填充图案。`setStrokeCap`
+设置描边端点的类型，可以在Paint.CAP\_...找到。`setStrokeWidth`设置描边宽度。`setStrokeJoin`
+设置描边转折处拐角形状，`setStrokeAlign`设置描边相对图形的侧，比如外侧，居中，内侧。`setStrokeMiter`可以将描边转折变为弧形转折，参数为弧形角度。
 
 画布调整：`scale`，`rotate`等可以调整缩放，旋转等内容。
+
+## 目标位置定位
+
+既然说到渲染，我们不得不再提到，我们应该使用哪些参数作为定位数据。
+
+使用`getLeft` `getTop` `getRight` `getButtom`获取到的位置是此组件相对于父组件的位置。以父组件的左上角为(0,0)
+，对应的此组件的各边界位置;
+
+使用`getPaddingLeft` `getPaddingTop` `getPaddingRight` `getPaddingButtom`获取到的是与父组件对应边界的相对距离。
+
+在画布(`Canvas`)与组件事件监听(`EventListener`)中，其均以组件的左上角作为(0,0)
+点位。举个例子，组件的右下角坐标，对应的就是(`getWidth()`,`getHeight()`)
+；如果您想让一张图片填充组件的右下角四分之一区域，其范围应当是\[(width / 2F, height / 2f), (width, height)]
+
+总而言之，对于我们的渲染部分，不需要考虑与父组件的位置相关性，直接使用组件内相对坐标系即可。

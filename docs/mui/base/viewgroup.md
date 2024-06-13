@@ -61,6 +61,9 @@ void onCreateView(){
 }
 ```
 
+另附：使用相关性布局时<font color="red">不会</font>主动扩展父对象的范围(即使父对象大小设置为WARP_CONTENT)。如果需要解决这一问题，你需要
+
+
 :::
 
 再在加入父group时传入params即可。
