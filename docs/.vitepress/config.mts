@@ -81,9 +81,10 @@ export default defineConfig({
               {text: "物品渲染-已烘培模型", link: "/render/item/baked_model"},
             ]
           },
-          {text: "渲染学", link: "/unliving/",
+          {text: "非生物实体学", link: "/unliving/",
             items: [
               {text: "容器与物品处理", link: "/unliving/container"},
+              {text: "战利品表", link: "/unliving/loottable"},
             ]
           },
           {

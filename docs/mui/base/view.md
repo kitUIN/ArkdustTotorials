@@ -86,6 +86,8 @@ I18n.get(String transKey);
 
 `setTextColor`可以设置文字颜色。提交的数值为一个x16数，可以在`icyllis.arc3d.core.Color`中找到预定义的颜色数值。`setTextSize`可以设置文件大小。
 
+文字大小的单位是sp，因此不需要使用`group.dp`来缩放字体大小。
+
 #### 设置提示（ToolTip）
 
 `setTooltipText`可以为其添加一个`tooltip`，在鼠标放置在其上方一段时间后显示。

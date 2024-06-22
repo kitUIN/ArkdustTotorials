@@ -120,7 +120,7 @@ void draw(@NonNull Canvas canvas);
 
 描边模式设置：`setStroke`方法可以设置是否开启描边模式，如果否则会填充图案。`setStrokeCap`
 设置描边端点的类型，可以在Paint.CAP\_...找到。`setStrokeWidth`设置描边宽度。`setStrokeJoin`
-设置描边转折处拐角形状，`setStrokeAlign`设置描边相对图形的侧，比如外侧，居中，内侧。`setStrokeMiter`可以将描边转折变为弧形转折，参数为弧形角度。
+设置描边转折处拐角形状，`setStrokeAlign`设置描边相对图形的侧，比如外侧，居中，内侧(注：此功能还没有实现)。`setStrokeMiter`可以将描边转折变为弧形转折，参数为弧形角度。
 
 画布调整：`scale`，`rotate`等可以调整缩放，旋转等内容。
 
