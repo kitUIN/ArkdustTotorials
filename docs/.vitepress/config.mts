@@ -65,11 +65,8 @@ export default defineConfig({
           {
             text: "数据学", link: "/data/",
             items: [
-              {text: "网络", link: "/data/network/",
-                items: [
-                  { text: "自定义数据包", link: "/data/network/custompacket" },
-                ]
-              }
+              { text: "自定义数据包", link: "/data/custompacket" },
+              { text: "编解码器*", link: "/data/codec" },
             ]
           },
           {text: "渲染学", link: "/render/",

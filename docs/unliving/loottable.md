@@ -5,7 +5,7 @@ versions:
   id: "container"
   vanilla: "1.20.x"
   loaders:
-    - text: "Neoforge 20.4.80-beta"
+    - text: "Neoforge 20.4.147-beta"
       loader: "neoforge"  
 ---
 
