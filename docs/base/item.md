@@ -18,7 +18,7 @@ and what distinguishes it from, say, a block. Let's illustrate this using an exa
 > <br/>In the world, you encounter a dirt block and want to mine it.This is a block, because it is placed in the world.
 (Actually, it is not a block, but a blockstate. See the Blockstates article for more detailed information.)  
 在一个世界中，你遇到了一个泥土方块并想把它挖掉。这是一个方块，因为它被放置在世界中。
-(实际上，它不是一个方块，而是一个方块状态(BlockState)。更多信息请参考 方块 基础 篇。)//TODO
+(实际上，它不是一个方块，而是一个方块状态(BlockState)。更多信息请[参考 方块 基础 篇](block.md)。)
 >
 > <br/>Not all blocks drop themselves when breaking (e.g. leaves), see the article on loot tables for more information.
 Once you have mined the block, it is removed (= replaced with an air block) and the dirt drops. The dropped dirt is an item entity. 

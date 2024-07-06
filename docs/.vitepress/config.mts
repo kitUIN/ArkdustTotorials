@@ -60,6 +60,7 @@ export default defineConfig({
               { text: "模组准备", link: "/base/prepare" },
               { text: "注册 基础*", link: "/base/registration" },
               { text: "物品 基础", link: "/base/item" },
+              { text: "方块 基础", link: "/base/block" },
             ],
           },
           {
