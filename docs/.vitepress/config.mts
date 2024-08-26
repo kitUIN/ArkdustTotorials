@@ -85,6 +85,11 @@ export default defineConfig({
               {text: "战利品表", link: "/unliving/loottable"},
             ]
           },
+          {text: "世界生成学", link: "/worldgen/",
+            items: [
+              {text: "序", link: "/worldgen/start"},
+            ]
+          },
           {
             text: "额外学", link: "/extra/",
             items: [
