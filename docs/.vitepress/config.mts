@@ -88,6 +88,7 @@ export default defineConfig({
           {text: "世界生成学", link: "/worldgen/",
             items: [
               {text: "序", link: "/worldgen/start"},
+              {text: "群系源", link: "/worldgen/biome_source"},
             ]
           },
           {

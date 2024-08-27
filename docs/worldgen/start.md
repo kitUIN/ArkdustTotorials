@@ -2,7 +2,7 @@
 writers:
   - AW-CRK14
 versions:
-  id: "container"
+  id: "worldgen_start"
   vanilla: "1.20.x"
   loaders:
     - text: "Neoforge 20.4.147-beta"
