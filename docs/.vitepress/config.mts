@@ -90,6 +90,7 @@ export default defineConfig({
               {text: "序", link: "/worldgen/start"},
               {text: "群系源", link: "/worldgen/biome_source"},
               {text: "密度函数", link: "/worldgen/density_func"},
+              {text: "表面规则", link: "/worldgen/surface_rule"},
             ]
           },
           {
