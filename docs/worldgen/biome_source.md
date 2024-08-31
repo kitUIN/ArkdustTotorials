@@ -117,11 +117,29 @@ public static record Sampler(
 
 @Override
 public Holder<Biome> getNoiseBiome(int pX, int pY, int pZ, Climate.Sampler pSampler) {
-    //将三分量乘以4，把群系单元坐标变换为方块坐标
-    long l = pSampler.sample(pX << 2, pY << 2, pZ << 2).continentalness();//获取位置的大陆性，其它分量请参考实例下的方法。
+    //sample方法会自动将三分量乘以4，把群系单元坐标变换为方块坐标
+    long l = pSampler.sample(pX, pY, pZ).continentalness();//获取位置的大陆性，其它分量请参考实例下的方法。
     return l >= 0 ? A : B;//如果大陆性大于0，返回群系A，否则返回B。
 }
 ```
+
+::: warning 非常重要且意义不明的事
+
+在上面代码中，`sample`在代码里会将六个气候分量的采样的大小乘以10000。
+这意味着，如果您本来需要大陆性大于1分配X群系，您应该使用
+
+```java
+
+@Override
+public Holder<Biome> getNoiseBiome(int pX, int pY, int pZ, Climate.Sampler pSampler) {
+    long l = pSampler.sample(pX, pY, pZ).continentalness();
+    return l >= 10000 ? X : B;
+}
+```
+
+对于这个10000的存在有什么意义，猜测可能是为了把`double`转换为`long`提高性能——但实际是否有效很难评价。
+
+:::
 
 除此之外，在群系源中还有一些方法用于查询附近群系，例如`findClosestBiome3d`方法，用于查找空间内最近的某群系；
 又比如`findBiomeHorizontal`方法，可以查询水平面内的某群系。对于其它用途请参考类下的方法与签名。
