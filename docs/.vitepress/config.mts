@@ -68,6 +68,7 @@ export default defineConfig({
             items: [
               { text: "自定义数据包", link: "/data/custompacket" },
               { text: "编解码器*", link: "/data/codec" },
+              { text: "自定义注册种类", link: "/data/custom_registry" },
             ]
           },
           {text: "渲染学", link: "/render/",
@@ -97,6 +98,7 @@ export default defineConfig({
             text: "额外学", link: "/extra/",
             items: [
               {text: "多模块", link: "/extra/multi_module",},
+              {text: "Architectury", link: "/extra/arch",},
             ],
           },
           {
