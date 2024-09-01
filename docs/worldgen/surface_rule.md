@@ -138,3 +138,9 @@ public record Rule(SurfaceRules.Context context) implements SurfaceRules.Surface
 ```
 
 最后我们需要把新创建的RuleSource的CODEC注册，使用注册键`Registries#MATERIAL_RULE`
+
+::: details 一点小笔记
+
+`stoneDepthAbove` 可以计算表面上方的方块量。当该方块会最表层方块时，数值为1。数值<=0不会生效。
+
+:::

@@ -104,7 +104,8 @@ export default defineConfig({
             items: [
                 {text: "无实体碰撞", link: "/experience/no_entity_collision"},
                 {text: "完美隐身", link: "/experience/perfect_invisible"},
-                {text: "额外模型注册", link: "/experience/extra_model"}
+                {text: "额外模型注册", link: "/experience/extra_model"},
+                {text: "菜单实体渲染", link: "/experience/title_screen_entity"}
             ]
           }
         ],

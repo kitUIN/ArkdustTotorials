@@ -137,7 +137,7 @@ public Holder<Biome> getNoiseBiome(int pX, int pY, int pZ, Climate.Sampler pSamp
 }
 ```
 
-对于这个10000的存在有什么意义，猜测可能是为了把`double`转换为`long`提高性能——但实际是否有效很难评价。
+对于这个10000的存在有什么意义，猜测可能是为了提高性能——但实际是否有效很难评价。
 
 :::
 

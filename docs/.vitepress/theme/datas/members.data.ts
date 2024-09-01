@@ -18,6 +18,14 @@ const members = [
       links: [
         { icon: 'github', link: 'https://github.com/AnECanSaiTin' },
       ]
+    },
+    {
+        avatar: '/github/IAFEnvoy.jpg',
+        name: 'IAFEnvoy',
+        title: '贡献者',
+        links: [
+            { icon: 'github', link: 'https://github.com/IAFEnvoy' },
+        ]
     }
   ];
 export default {
