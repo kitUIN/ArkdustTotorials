@@ -5,36 +5,36 @@ writers:
   - AW-CRK14
 ---
 
+# 在 Minecraft 中使用 ModernUI 的 UI 系统
 
-# 在mc中使用Mui的UI系统
+在 ModernUI 中，一个 UI 界面的基本单位是 Fragment。为了方便表述，本文中将其统称为 **MUIFragment**（请注意，这个名字并非官方术语，仅用于本文）。
 
-Mui中，一个UI界面的基本单位是Fragment。为了方便表述，在下文中，我会将它们统称为FUI（这个名字不是一个官方的称呼，因此不要到其它地方使用这个名字。）
-
-如果需要打开一个FUI，需要使用
-
-```java
-icyllis.modernui.mc.MuiModApi#openScreen
-```
-
-这个方法需要传入一个Fragment实例，创建这个实例你需要继承Fragment类并覆写一些方法，其中最重要的是
+要打开一个 **MUIFragment**，需要使用 `icyllis.modernui.mc.ModernUIApi#openScreen` 方法。
+此方法需要传入一个 `Fragment` 实例，要创建这个实例，您需要继承 `Fragment` 类并重写一些关键方法，其中最重要的是：
 
 ```java
-public View onCreateView(LayoutInflater flater, ViewGroup container, DataSet savedInstanceState)
+public View onCreateView(LayoutInflater inflater, ViewGroup container, DataSet savedInstanceState) {
+}
 ```
 
-方法，这个方法用于创建一个View，也就是可视对象，包含你需要打开的FUI中的所有元素。我们会在之后提及。
+这个方法用于创建一个 `View`，即可视对象，包含您希望在界面中展示的所有元素。我们将在后续内容中详细讨论这些元素。
 
-值得注意的是，Mui的UI系统与MC原版的UI系统在设计上有较大的差异，这一部分由于本人并没有深入了解过AndroidUI，所以不在此详细阐述，只是点出一点：这套系统没有类似tick的方法，只会在有任务的时候执行相应任务。因此，如果您想实现类似计时器之类的与时间有关的功能，您应当固定周期地循环推送任务。
+请注意，ModernUI 的 UI 系统在设计上与 Minecraft 原版的 UI 系统有较大差异。
+由于本人了解有限，此处不做详细阐述。简单说明一点：该系统没有类似 `tick` 的方法，而是根据任务的需要执行相应操作。
+因此，**如果您希望实现类似计时器的功能，您需要定期循环推送任务**。
 
-FUI没有公用的关闭方法。如果您想创造一个按钮来关闭界面，应使用
+**MUIFragment** 没有公共的关闭方法。如果您想创建一个按钮来关闭界面，可以使用如下代码：
 
 ```java
-setOnCheckedChangeListener((button,id)-> {
-    Minecraft.getInstance().execute(()->Minecraft.getInstance().setScreen(null));
-});
+static {
+    setOnCheckedChangeListener((button, id) ->
+            Minecraft.getInstance().execute(
+                    () -> Minecraft.getInstance().setScreen(null)
+            ));
+}
 ```
 
-为了更方便地测试FUI，您可以添加以下内容：
+为了方便测试，您可以添加以下代码：
 
 ```java
 public static void main(String[] args) {
@@ -42,11 +42,12 @@ public static void main(String[] args) {
     Configurator.setRootLevel(Level.DEBUG);
 
     try (ModernUI app = new ModernUI()) {
-        app.run();//这里传入你的Fragment实例
+        app.run(); // 在这里传入您的 Fragment 实例
     }
     AudioManager.getInstance().close();
     System.gc();
 }
 ```
 
-这样就可以直接运行出FUI的测试窗口了。
+这启动了一个专门的，适配MUI框架的窗口以展示渲染效果。
+通过这种方式，您可以直接运行并测试 **MUIFragment** 的效果。

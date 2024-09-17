@@ -6,123 +6,119 @@ writers:
 ---
 
 
-# 视图组(ViewGroup)
+# 视图组 (ViewGroup)
 
-安卓UI系统对视图组(ViewGroup)的描述是这样的：
+在 Android UI 系统中，视图组 (`ViewGroup`) 的描述如下：
 
-> A ViewGroup is a special view that can contain other views (called children.) The view group is the base class for layouts and views containers. This class also defines the ViewGroup.LayoutParams class which serves as the base class for layouts parameters.
->
-> 视图组(ViewGroup)是一种特殊的，可以存储其它视图(称为子视图)的视图。视图组是"布局"和"视图容器"的基类。此类中同样定义了LayoutParams类作为其它布局参数的基类。
+> 视图组 (`ViewGroup`) 是一种特殊的视图，它可以包含其他视图（称为子视图）。视图组是“布局”和“视图容器”的基类。该类还定义了 `ViewGroup.LayoutParams` 类，作为其他布局参数的基类。
 
-简单来说，您可以将其理解为一组可以自动响应位置变化的一组视图。
+简单来说，视图组可以看作是一个容器，用于存放并管理一组视图。它能够自动处理视图的相对位置和布局。
 
 ## LayoutParams
 
-`LayoutParams`是用于控制线性布局中一个元素的相对位置的参数。其文件包位置为`icyllis.modernui.widget.LinearLayout.LayoutParams`。可以设置其在组中的相对位置范围，以及组的gravity。
+`LayoutParams` 用于控制线性布局中元素的相对位置。它的类路径为 `icyllis.modernui.widget.LinearLayout.LayoutParams`。通过 `LayoutParams` 可以设置子视图在组中的位置范围及布局的重力属性。
 
-`setMargins`与`setMarginsRelative`方法可以设置子组件的收缩或扩张(好像不能扩张)，四个值分别是原始位置相对于左，上，右，下边的收缩量。
+- **设置边距**：使用 `setMargins` 和 `setMarginsRelative` 方法可以设置子组件的边距。`setMargins` 设置的是固定的边距，而 `setMarginsRelative` 可以设置相对于视图的起始和结束边距。
 
-`addRule`方法可以为目标配置布局相关性关系，使用多个`addRule`方法以添加多个关系。
+- **添加布局规则**：使用 `addRule` 方法可以为目标视图配置布局关系。可以使用多个 `addRule` 方法来添加多个布局规则。
 
 ## RelativeLayout
 
-关系布局是一种比较自由的布局，可以指定一个子视图在布局中的相对位置，也可以设置其对齐规则。对于其位置的调整，我们可以使用`setX``setY`或者在`LayoutParams`里使用`setMarginsRelative`方法实现。不过，二者的效果并不完全相同，[前者在实际使用中具有二倍特性](view.md#相对位置设置)。因此，我建议您使用后者
+`RelativeLayout` 是一种灵活的布局方式，可以指定子视图在布局中的相对位置和对齐规则。可以通过 `setX` 和 `setY` 方法来调整视图的位置，但这些方法的效果可能与 `LayoutParams` 中的 `setMarginsRelative` 不完全相同，建议使用 `LayoutParams` 进行布局设置。
 
-需要注意的是，`RelativeLayout`使用的对齐规则与常用的`Gravity`存在差异。为了实现对齐效果，我们需要创建一个`RelativeLayout.LayoutParams`实例，然后使用`addRule`方法添加对齐规则。规则可以`RelativeLayout`类下的常量处找到。比如，我们想使一个视图布局在右上角，我们可以创建这样一个params：
+`RelativeLayout` 的对齐规则与 `Gravity` 略有不同。为了实现对齐效果，需要创建一个 `RelativeLayout.LayoutParams` 实例，并使用 `addRule` 方法添加对齐规则。这些规则可以在 `RelativeLayout` 类下找到。例如，如果希望将一个视图布局在右上角，可以创建如下的参数：
 
 ```java
-void a(){
-    RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(group.dp(20),group.dp(20));
-    params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT);//与父对象右侧对齐，类似于Gravity.RIGHT。
-    params.addRule(RelativeLayout.CENTER_VERTICAL);//在父对象竖直方向上居中。
+void initLayout(){
+    RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(group.dp(20), group.dp(20));
+    params.addRule(RelativeLayout.ALIGN_PARENT_RIGHT); // 与父视图右侧对齐，类似于 Gravity.RIGHT。
+    params.addRule(RelativeLayout.CENTER_VERTICAL); // 在父视图的竖直方向上居中。
 }
 ```
 
-请注意，`ALIGN_PARENT_RIGHT`会倾向于使组件的位置尽可能右，因此可能会导致在横向布局参数被设置为-2(`WARP_CONTENT`)的时候整个布局拉的很长。在这时，您或许需要考虑使用`RelativeLayout.ALIGN_RIGHT`
+请注意，`ALIGN_PARENT_RIGHT` 可能会导致组件在横向布局参数设置为 `-2`（`WARP_CONTENT`）时拉伸过长。在这种情况下，可以考虑使用 `RelativeLayout.ALIGN_RIGHT`。
 
-若想保持两个子组件在一个向左对齐，一个向右对齐且在压缩状态下不相互叠合，需要为右侧的一个设置`RelativeLayout.RIGHT_OF`或为左侧的设置`RelativeLayout.LEFT_OF`。请保证不出现循环依赖，这将导致问题。
+要保持两个子视图在一个向左对齐，另一个向右对齐且在压缩状态下不重叠，需要设置 `RelativeLayout.RIGHT_OF` 或 `RelativeLayout.LEFT_OF`。请确保避免循环依赖，这可能导致布局问题。
 
-::: warning :warning: 注意：
-在`RelativeLayout.RIGHT_OF` `RelativeLayout.ALIGN_RIGHT`等存在相关性的布局约束上，需要指定相关目标。比如说，现在存在`a` `b` `c`，其中`a`是后二者的父组件，我们想让`b`在`a`中的右侧对齐，且保证不会与左侧的`c`重叠：
+::: warning :warning: 注意
+在使用 `RelativeLayout.RIGHT_OF`、`RelativeLayout.ALIGN_RIGHT` 等布局约束时，需要指定相关目标。例如，若要将视图 `b` 放置在视图 `a` 的右侧，并避免与视图 `c` 重叠，可以这样设置：
 
 ```java
 void onCreateView(){
     RelativeLayout a = new RelativeLayout(getContext());
     View b = new View(getContext());
     View c = new View(getContext());
-    //......
-    //下面是需要额外设置的内容
-    a.setId(20001);//你可以设定为任一正int值，但需要保证唯一性。在未设置时，所有view的id都是-1
-    c.setId(20002);//同样，保证唯一性
-    RelativeLayout.LayoutParams para = new RelativeLayout.LayoutParams(-2, -2);//大小为包围内容
-    para.addRule(RelativeLayout.ALIGN_RIGHT,20001);//设置与id=20001的组件(a)的右侧对齐
-    para.addRule(RelativeLayout.RIGHT_OF,20002);//设置排布于id=20002的组件(c)的右侧
-    a.addView(b,para);
+
+    a.setId(20001); // 设置唯一的 ID
+    c.setId(20002); // 设置唯一的 ID
+
+    RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(-2, -2); // 大小包围内容
+    params.addRule(RelativeLayout.ALIGN_RIGHT, 20001); // 设置与 ID 为 20001 的组件右侧对齐
+    params.addRule(RelativeLayout.RIGHT_OF, 20002); // 设置排布在 ID 为 20002 的组件右侧
+
+    a.addView(b, params);
 }
 ```
 
-另附：使用相关性布局时<font color="red">不会</font>主动扩展父对象的范围(即使父对象大小设置为WARP_CONTENT)。如果需要解决这一问题，你需要
-
+注意，使用 `RelativeLayout` 时，父视图不会自动扩展其范围（即使设置为 `WARP_CONTENT`）。需要手动调整父视图的大小以适应子视图。
 
 :::
 
-再在加入父group时传入params即可。
-
 ## LinearLayout
 
-线性布局可以使内容排成一列，实现类似设置窗口等的效果。
+`LinearLayout` 允许将视图按列或行排列，类似于设置窗口等效果。
 
-设置排列方向：`setOrientation`可以设置布局方向，比如`LinearLayout.VERTICAL`可以设置为竖直布局，而`LinearLayout.HORIZONTAL`可以设置为水平布局。
+- **设置排列方向**：使用 `setOrientation` 方法可以设置布局方向。例如，`LinearLayout.VERTICAL` 设置为垂直布局，而 `LinearLayout.HORIZONTAL` 设置为水平布局。
 
-设置元素间隔：`setShowDividers`可以设置哪些元素之间需要渲染间隔部分，一般包括以下几种：
+- **设置元素间隔**：使用 `setShowDividers` 方法可以设置哪些元素之间需要渲染间隔部分。常见的设置包括：
 
-```java
-public static final int SHOW_DIVIDER_NONE = 0;
-public static final int SHOW_DIVIDER_BEGINNING = 1;
-public static final int SHOW_DIVIDER_MIDDLE = 2;
-public static final int SHOW_DIVIDER_END = 4;
-```
+    ```java
+    public static final int SHOW_DIVIDER_NONE = 0;
+    public static final int SHOW_DIVIDER_BEGINNING = 1;
+    public static final int SHOW_DIVIDER_MIDDLE = 2;
+    public static final int SHOW_DIVIDER_END = 4;
+    ```
 
-分别对应无间隔渲染，起始位置渲染，中间位置渲染，结束位置渲染。若要设置多个，请使用|符号连接。`setDividerDrawable`方法用于提供一个渲染间隔条的渲染器。
+  这四种设置分别对应无间隔、起始位置间隔、中间位置间隔和结束位置间隔。可以使用 `|` 符号连接多个设置。`setDividerDrawable` 方法用于提供一个渲染间隔条的 drawable。
 
-`setDividerPadding`方法可以设置分隔线在相应方向上的拓展距离。
+- **设置分隔线的内边距**：使用 `setDividerPadding` 方法可以设置分隔线在方向上的拓展距离。
 
-设置子view的相对位置：子元素在`Group`中的排列趋势可以通过设置`Group`的`Gravity`决定，使用`setHorizontalGravity`与`setVerticalGravity`可以引导子组件从某一方向开始排列。
+- **设置子视图的相对位置**：使用 `setHorizontalGravity` 和 `setVerticalGravity` 方法可以设置子视图从某一方向开始排列。例如：
 
-```java
-void a(){
-    LinearLayout base = new LinearLayout(getContext());
-    base.setShowDividers(LinearLayout.SHOW_DIVIDER_NONE);
-    base.setOrientation(LinearLayout.VERTICAL);
-    base.setDividerPadding(base.dp(5));
+    ```java
+    void a(){
+        LinearLayout base = new LinearLayout(getContext());
+        base.setShowDividers(LinearLayout.SHOW_DIVIDER_NONE);
+        base.setOrientation(LinearLayout.VERTICAL);
+        base.setDividerPadding(base.dp(5));
 
-    RelativeLayout topLayout = new RelativeLayout(getContext());
+        RelativeLayout topLayout = new RelativeLayout(getContext());
 
-    //添加一些子View
+        // 添加一些子视图
 
-    topLayout.setBackground(withBorder());//测试用，设置view的背景。
-    base.setVerticalGravity(Gravity.BOTTOM);
-    base.addView(topLayout);
-}
-```
+        topLayout.setBackground(withBorder()); // 设置背景
+        base.setVerticalGravity(Gravity.BOTTOM);
+        base.addView(topLayout);
+    }
+    ```
 
-这样我们的`topLayout`就会出现在`base`组件的底部了。
+  这样 `topLayout` 将出现在 `base` 组件的底部。
 
 ## RadioGroup
 
-`RadioGroup`是`LinearLayout`的子类，专门用于处理一组`RadioButton`，可以保证其对应的所有`RadioButton`中只有一个被选中或一个都没有被选中。使用`addView`与`removeView`来添加与删除元素。
+`RadioGroup` 是 `LinearLayout` 的子类，专门用于处理一组 `RadioButton`，确保在所有 `RadioButton` 中只能选择一个（或者一个都没有选择）。
 
-选择一个元素：`click`方法可用于选择一个元素，其传入数值应为对应按钮的id。
+- **选择一个元素**：使用 `click` 方法选择一个元素，其参数应为按钮的 ID。
 
-清除元素选择：使用`clearCheck`方法可以将选择的元素重置到无选择状态。
+- **清除选择**：使用 `clearCheck` 方法可以将选中的按钮重置为无选择状态。
 
-特别的，`RadioGroup`中可以监听一个`OnCheckedChange`事件，用于处理被选择的按钮变化时需要进行的内容。
+- **监听选中变化**：可以设置 `OnCheckedChange` 事件监听器，以处理按钮选择变化时的操作。
 
 ## Spinner
 
-`Spinner`是一类特殊的`ViewGroup`，用于打开一个下拉选择列表，并允许选择一个内容，常用于诸如选择城市，选择语言等。
+`Spinner` 是一种特殊的 `ViewGroup`，用于显示下拉选择列表，并允许选择一个选项。常用于选择城市、语言等。
 
-下面是一段`Spinner`的代码示例，摘自MUI的测试页面代码：
+示例代码：
 
 ```java
 void a(){
@@ -131,21 +127,22 @@ void a(){
     ArrayList<String> list = new ArrayList<>(FontFamily.getSystemFontMap().keySet());
     list.sort(null);
     spinner.setAdapter(new ArrayAdapter<>(getContext(), list));
-    p = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT,
-            ViewGroup.LayoutParams.WRAP_CONTENT);
+    p = new LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
     spinner.setMinimumWidth(dp(240));
 }
 ```
 
-这个示例创建了一个下拉栏，里面包含所有系统安装了的字体的名字。
+这段代码创建了一个下拉选择框，其中包含所有系统安装的字体名称。
 
 ## FragmentContainerView
 
-记得在`Fragment`阶段我们提到的“Fragment可以组合”吗？`FragmentContainerView`可以用来记录一个`Fragment`，并把它像`View`一样加载进其它`ViewGroup`中，加载整个`Fragment`。`FragmentContainerView`需要记录这个组件的`id`，因此您应当在`Fragment`中专门定义一个常量来帮助处理。就像这样：
+`FragmentContainerView` 用于管理和显示 `Fragment`，可以像视图一样加载到其他 `ViewGroup` 中。您需要为 `FragmentContainerView` 设置一个唯一的 ID，以便在 `Fragment` 中引用。
+
+示例代码：
 
 ```java
-void a(){
-    final int tabId = 0x200;//这地方随你搞
+void replace(){
+    final int tabId = 0x200; // 设定唯一 ID
     getChildFragmentManager().beginTransaction()
             .replace(tabId, MarkdownFragment.class, null, "markdown")
             .setTransition(FragmentTransaction.TRANSIT_FRAGMENT_OPEN)
@@ -158,4 +155,4 @@ void a(){
 }
 ```
 
-这通常和按钮等功能结合，用于处理内部分页。您可以参考`icyllis.modernui.mc.CenterFragment2`下的代码，查看更多用法。
+这段代码结合按钮功能，实现了内部分页的功能。更多用法可以参考 `icyllis.modernui.mc.CenterFragment2` 下的代码。

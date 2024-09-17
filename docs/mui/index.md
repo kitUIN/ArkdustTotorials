@@ -5,13 +5,12 @@ writers:
   - AW-CRK14
 ---
 
-
 # ModernUI 使用笔记
 
-ModernUI是一个Minecraft模组，修改了原版部分ui渲染逻辑，并提供了一套与AndroidUI几乎一致的UI系统。有关MUI的具体内容，请参考
+ModernUI 是一个 Minecraft 模组，它修改了原版的 UI 渲染逻辑，并实现了一套与 Android UI 极为相似的用户界面系统。
+有关 ModernUI 的详细信息，请访问 [MUI 在 mcmod 上的项目页面](https://www.mcmod.cn/class/2454.html)。
 
-[MUI在mcmod上的项目链接](https://www.mcmod.cn/class/2454.html)
+本部分内容记录了在使用 ModernUI 模组创建自定义 UI 界面时的个人经验和理解。
+这些记录主要用于备忘，可能不如教程易于阅读。如果您不需要特定的定制，可能无需详细阅读。
 
-本部分内容将记录本人在使用MUI模组作为依赖时，对于用MUI创建自定义UI界面的一些记录与理解。此部分更多为记录而非教程，因此可能较为枯燥，若没有特别需求，可以不必阅读。
-
-同时，由于MUI提供的UI系统与AndroidUI相似，您也可以直接寻找AndroidUI教程来实现你的目的。
+由于 ModernUI 的 UI 系统与 Android UI 类似，您也可以参考 Android UI 的相关教程来实现您的需求。

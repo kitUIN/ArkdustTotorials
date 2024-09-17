@@ -32,13 +32,13 @@ configurations {
 }
 ```
 
-然后在dependencies部分添加mui的编译与运行依赖：
+然后在dependencies部分添加mui的编译与运行依赖，请寻找合适版本的版本，这里以neoforge1.21.1版本的mui为例：
 
 ```gradle
 // Modern UI core framework
-libraries "icyllis.modernui:ModernUI-Core:${modernui_version}"
+libraries "icyllis.modernui:ModernUI-Core:3.11.0"
 // Modern UI core extensions
-libraries "icyllis.modernui:ModernUI-Markdown:${modernui_version}"
+libraries "icyllis.modernui:ModernUI-Markdown:3.11.0"
 // Modern UI for Minecraft Forge
 compileOnly "curse.maven:modern-ui-352491:5040141"
 runtimeOnly "curse.maven:modern-ui-352491:5040141"
@@ -50,7 +50,7 @@ runtimeOnly "curse.maven:modern-ui-352491:5040141"
 [[dependencies.xxx]]
     modId="modernui"
     type="required"
-    versionRange="[3.10.0.6,)"
+    versionRange="[3.11.0,)"
     ordering="NONE"
     side="CLIENT"
 ```
@@ -68,6 +68,5 @@ xxx部分是你的modid。由于mui只处理渲染有关的内容，我们将其
 [ModernUI-MC](https://github.com/BloCamLimb/ModernUI-MC)
 
 两个都要下！
-
 
 然后在idea中选择源，按住ctrl把两个都选中，导入即可。
